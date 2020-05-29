@@ -1,0 +1,8 @@
+@media screen and (max-width: 1068px) {
+   .carousel{
+
+   }
+    .thumb>img{
+        height:60px !important;
+    }
+}

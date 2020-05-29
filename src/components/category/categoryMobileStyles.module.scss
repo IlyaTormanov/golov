@@ -1,0 +1,25 @@
+.inner{
+  padding: 80px 15px;
+  max-width: 1200px;
+  width:100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  .left_menu{
+    background: white;
+
+    .header{
+      border-top: 2px solid #189691;
+      border-left: 2px solid #189691;
+      border-right: 2px solid #189691;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 3px;
+    }
+    .wrap_ul_mobile{
+      border: 2px solid #189691;
+      box-sizing: border-box;
+      width:100%;
+
+    }
+  }
+}

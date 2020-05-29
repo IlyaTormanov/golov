@@ -1,0 +1,20 @@
+.footer{
+  background: #127387;
+  opacity: 0.9;
+  .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 9px 15px 8px;
+    color:white;
+    font-size:16px;
+    .footer_list_left{
+
+    }
+    .footer_list_right{
+
+    }
+  }
+}

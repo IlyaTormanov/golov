@@ -1,0 +1,68 @@
+.sidebar{
+  @media screen and (max-width:480px){
+    width:65%;
+  }
+  width: 50%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: calc(100vh);
+  background: #179590;
+  color: #ffffff;
+  padding: 10px;
+  .close_icon{
+    width:100%;
+    justify-content: flex-end;
+    display:flex;
+    font-size:22px;
+  }
+  .content{
+    display:flex;
+    flex-direction: column;
+    .first_row{
+      display:flex;
+      flex-direction: column;
+      .lc{
+        cursor: pointer;
+        margin: 10px 0;
+        color:white;
+       text-decoration: none;
+        font-size: 20px;
+        span{
+          padding-left:7px;
+        }
+      }
+      .add{
+        cursor: pointer;
+        margin: 10px 0;
+        font-size: 20px;
+        text-decoration: none;
+        color:white;
+      }
+    }
+    .last_row{
+      font-size:20px;
+      position: absolute;
+      bottom: 5%;
+      left: 0;
+      width: 100%;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      .exit{
+        padding-left:7px;
+        cursor:pointer;
+      }
+      .welcome{
+
+        border-bottom: 2px solid #ffffff;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        max-height: 100px;
+        overflow: hidden;
+      }
+    }
+  }
+}

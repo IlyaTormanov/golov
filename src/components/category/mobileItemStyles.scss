@@ -1,0 +1,24 @@
+.item_mobile{
+  width:100%;
+  cursor:pointer;
+  font-size: 20px;
+  font-weight: bold;
+  .field{
+    border-bottom: 2px solid #189691;
+
+    display: block;
+    cursor: pointer;
+    padding: 3px;
+    &.open {
+      background:  #189691;
+      border-color: white;
+      color: white;
+    }
+  }
+  .second_ul_mobile{
+    display: block;
+    cursor: pointer;
+    width:100%;
+    box-sizing: border-box;
+  }
+}

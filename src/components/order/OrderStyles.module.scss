@@ -1,0 +1,40 @@
+.order{
+  position: fixed;
+  z-index: 50;
+  left: 20%;
+  right: 20%;
+  top: 3%;
+  width: 60%;
+  background: white;
+  border-radius: 10px;
+  padding: 4%;
+  border: 2px solid #189691;
+  .title{
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 2rem;
+  }
+  form{
+
+    .item_title{
+      padding-bottom: 3px;
+      border-bottom: 2px solid #cdcdce;
+      display: flex;
+      justify-content: space-between;
+      .item{
+          width:33%;
+
+      }
+    }
+    .item_list{
+      display: flex;
+      justify-content: space-between;
+      .order{
+
+      }
+    }
+  }
+}
