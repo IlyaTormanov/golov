@@ -10,12 +10,12 @@ import {useParams} from "react-router";
 
 export interface Props{
     product:Product,
-
+    isLc?:boolean
 }
 export const ProductCard:FunctionComponent<Props>=(props)=>{
     const {cust_id, gallery_id}=useParams<{cust_id:string, gallery_id: string}>();
     return(
-        <div className={styles.product_list_item} onClick={()=>history.push(`/${cust_id}/${gallery_id}/${props.product.prc_ID}`)}>
+        <div className={styles.product_list_item} onClick={()=>history.push(props.isLc?`/${cust_id}/personalClient/${gallery_id}/${props.product.prc_ID}`:`/${cust_id}/${gallery_id}/${props.product.prc_ID}`)}>
             <div className={styles.avatar_wrapper}>
                 <img src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${props.product.image_Base}`}/>
             </div>
@@ -25,6 +25,13 @@ export const ProductCard:FunctionComponent<Props>=(props)=>{
                 </div>
                 <div className={styles.price}>
                     {props.product.prc_Br}
+                    {props.isLc&&
+                    <div>
+                        <span>
+                            В корзину
+                        </span>
+                    </div>
+                    }
                 </div>
             </div>
 

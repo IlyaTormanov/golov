@@ -25,19 +25,19 @@ $classes: image aside info left right additional;
 
 
     @media screen and (max-width: 1068px) {
-      grid-template-rows: 60vh 30vh repeat(2, max-content);
+      grid-template-rows:  repeat(4, max-content);
       grid-template-columns: 1fr;
-      grid-template-areas: 'image' 'additional' 'info' 'aside';
+      grid-template-areas: 'left' 'image' 'right''additional' 'info' 'aside';
       width: 100%;
       margin: 0;
       &.empty {
         grid-template-rows: 95vh repeat(2, max-content);
-        grid-template-areas: 'image' 'info' 'aside';
+        grid-template-areas: 'left' 'image' 'right' 'info' 'aside';
       }
     }
 
     .close_icon {
-      position: absolute;
+position: absolute;
       color: #ffffff;
       right: 1%;
       top: 2%;
@@ -57,7 +57,12 @@ $classes: image aside info left right additional;
       align-items: center;
       justify-content: center;
       min-width: 0;
-
+        @media screen and (max-width:600px){
+          img{
+            min-width:0;
+            height:350px;
+          }
+        }
       .detail_product_item_images {
         box-sizing: border-box;
         min-height: calc(88.6vh);
@@ -115,7 +120,7 @@ $classes: image aside info left right additional;
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #f1173a;
+
           margin: 0 auto;
           padding: 8px 11px 7px 18px;
           cursor: pointer;
@@ -130,6 +135,26 @@ $classes: image aside info left right additional;
 
           span {
             padding-left: 6px;
+          }
+        }
+      }
+      .button_grp{
+        width:100%;
+        padding-top:15px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        div{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 8px 11px 7px 18px;
+          cursor: pointer;
+          color: #ffffff;
+          font-size: 25px;
+          @media screen and (max-width:1078px){
+            max-width: 195px;
+            margin: 0 auto 0px;
           }
         }
       }
@@ -212,6 +237,9 @@ $classes: image aside info left right additional;
         height: 40px;
         color: #ffffff;
         justify-content: center;
+        @media screen and (max-width:600px){
+          font-size:14px
+        }
         @media screen and (max-width: 1068px) {
           flex-direction: row;
           padding-top: 10px;

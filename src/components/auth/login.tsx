@@ -33,8 +33,8 @@ export const Login:FunctionComponent<Props>=()=>{
                    status={{text:response.message,status:response.result}}
                    form={
             <form>
-                <AuthInput placeholder={'Ваш моб.телефон'} onChange={value => mergeData({Cust_ID_Main:cust_id,UserName:value})}/>
-                <AuthInput placeholder={'Пароль'} typePass={'password'} onChange={value => mergeData({Password:value})}/>
+                <AuthInput placeholder={'Ваш моб.телефон'} onChange={value => mergeData({Cust_ID_Main:cust_id,UserName:value})} value={submitData.UserName}/>
+                <AuthInput placeholder={'Пароль'} typePass={'password'} onChange={value => mergeData({Password:value})} value={submitData.Password}/>
             </form>
         } onClick={submit} additionalLinks={
             <div style={{display:'flex',flexDirection:'column',marginTop:'12px'}}>

@@ -33,29 +33,30 @@ export const Registration:FunctionComponent<Props>=()=>{
     const response=useSelector((state:RootStateType)=>state.auth.register)
     const [data,setData]=useState(registerData);
     const mergeData=(changes:Partial<RegisterRequest>)=>setData(prepareEntity(changes));
-console.log(response)
     return(
 
-        <AuthModal headerText={'Регистрация'}
-                   status={{text:response.message,status:response.result}}
-                   onClick={()=>dispatch(authActions.registration.request(data))}
-                   buttonText={'Зарегистрироваться'} form={
-            <form>
-                <AuthInput placeholder={'Ваше имя'} onChange={value => mergeData({f:value,Cust_ID_Main:cust_id})}/>
-                <AuthInput placeholder={'Ваш email'} onChange={value => mergeData({e_mail:value})}/>
-                <AuthInput placeholder={'Ваш стационарный номер'} onChange={value => mergeData({Phone1:value})}/>
-                <AuthInput placeholder={'Ваш мобильный номер'} onChange={value => mergeData({Mobile:value})}/>
-                <AuthInput placeholder={'Пароль '} typePass={'password'} onChange={value => mergeData({password:value})}/>
-            </form>
-                   } additionalLinks={
-            <div style={{display:'flex',flexDirection:'column'}}>
-                <Link to={`/${cust_id}/restore`} style={{color:'#189691',textDecoration:'none'}}>
-                    Забыли пароль
-                </Link>
-                <Link to={`/${cust_id}/login`} style={{color:'#189691',textDecoration:'none',marginTop:'12px'}}>
-                    Войти
-                </Link>
-            </div>
-        }/>
+        <div >
+            <AuthModal headerText={'Регистрация'}
+                       status={{text:response.message,status:response.result}}
+                       onClick={()=>dispatch(authActions.registration.request(data))}
+                       buttonText={'Зарегистрироваться'} form={
+                <form>
+                    <AuthInput placeholder={'Ваше имя'} onChange={value => mergeData({f:value,Cust_ID_Main:cust_id})} value={data.f}/>
+                    <AuthInput placeholder={'Ваш email'} onChange={value => mergeData({e_mail:value})} value={data.e_mail}/>
+                    <AuthInput placeholder={'Ваш стационарный номер'} onChange={value => mergeData({Phone1:value})} value={data.Phone1}/>
+                    <AuthInput placeholder={'Ваш мобильный номер'} onChange={value => mergeData({Mobile:value})} value={data.Mobile}/>
+                    <AuthInput placeholder={'Пароль '} typePass={'password'} onChange={value => mergeData({password:value})} value={data.password}/>
+                </form>
+            } additionalLinks={
+                <div style={{display:'flex',flexDirection:'column'}}>
+                    <Link to={`/${cust_id}/restore`} style={{color:'#189691',textDecoration:'none'}}>
+                        Забыли пароль
+                    </Link>
+                    <Link to={`/${cust_id}/login`} style={{color:'#189691',textDecoration:'none',marginTop:'12px'}}>
+                        Войти
+                    </Link>
+                </div>
+            }/>
+        </div>
     )
 }

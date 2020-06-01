@@ -15,8 +15,8 @@ export interface Props{
         isLast: boolean,
     })=>void,
     path:Category[],
-    isAdvert?:boolean
-
+    isAdvert?:boolean,
+    isCid?:string
 }
 
 export const CategoryDropdownMobile:FunctionComponent<Props>=(props)=>{
@@ -26,7 +26,8 @@ export const CategoryDropdownMobile:FunctionComponent<Props>=(props)=>{
     useEffect(()=>{
         dispatch(categoriesAction.fetchAllCategory.request({
             cust_ID_Main: cust_id,
-            advert:props.isAdvert?'1':''
+            advert:props.isAdvert?'1':'',
+            cid:props.isCid?props.isCid:''
         }))
     },[dispatch, cust_id])
     return(

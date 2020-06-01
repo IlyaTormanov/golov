@@ -22,7 +22,9 @@ import {push} from "connected-react-router";
 export interface GalleryProps {
     path: Category[],
     onClick: (index: number) => void,
-    secondClick: (path: Category[]) => void
+    secondClick: (path: Category[]) => void,
+    isLk?:boolean,
+    cid?:string
 }
 
 export const Gallery: FunctionComponent<GalleryProps> = (props) => {
@@ -37,7 +39,7 @@ export const Gallery: FunctionComponent<GalleryProps> = (props) => {
     const currentPage = useSelector((state: RootStateType) => state.gallery.paginate)
     useEffect(() => {
         dispatch(galleryActions.fetchGallery.request({
-            data: {CID: '', ID: gallery_id, Cust_ID: cust_id},
+            data: {CID: props.cid?props.cid:'', ID: gallery_id, Cust_ID: cust_id},
             paginateInfo: {PageNumber: currentPage, CountOnPage: 15}
         }))
         dispatch(galleryActions.galleryPreloader.success(true))
@@ -62,42 +64,49 @@ export const Gallery: FunctionComponent<GalleryProps> = (props) => {
                                 crumbs_list={crumb}
                                 onClick={() => {
                                     props.onClick(index);
-                                    dispatch(push('/' + cust_id));
+                                    dispatch(push(props.isLk?`/${cust_id}/personalClient`:'/' + cust_id));
                                 }}
                             />
                         )
                         :
-                        <CategoryDropdownMobile onClick={params => {
+                        <CategoryDropdownMobile   isCid={props.cid} onClick={params => {
                             props.secondClick(params.isOpen ? pipe(params.path, init, getOrElse<Category[]>(() => [])) : params.path)
                             if (params.isLast) {
-                                history.push(`/${cust_id}/${params.path[params.path.length - 1].id}`)
+                                history.push(props.isLk?`/${cust_id}/personalClient/${params.path[params.path.length - 1].id}`:`/${cust_id}/${params.path[params.path.length - 1].id}`)
                             }
                         }}
-                                                path={props.path}/>
+
+                      path={props.path}/>
                     }
 
 
                 </div>
             }
-            <div className={styles.products}>
-                {products.res.map((product, index) =>
-                    <ProductCard product={product} key={index}/>
-                )}
-            </div>
-            <Pagination className={styles.pagination} current={currentPage}
-                        total={products.pageInfoOutput.totalPages * products.pageInfoOutput.countOnPage}
-                        pageSize={products.pageInfoOutput.countOnPage}
-                        onChange={(page, pageSize) => {
-                            dispatch(galleryActions.fetchGallery.request({
-                                data: {
-                                    CID: '',
-                                    ID: gallery_id,
-                                    Cust_ID: cust_id
-                                }
-                                , paginateInfo: {PageNumber: page, CountOnPage: pageSize}
-                            }));
+            {!preloader&&
+            <>
+                <div className={styles.products}>
+                    {products.res.map((product, index) =>
+                        <ProductCard product={product} key={index} isLc={props.isLk}/>
+                    )}
+                </div>
+                {products.pageInfoOutput.totalPages>1&&
+                <Pagination className={styles.pagination} current={currentPage}
+                            total={products.pageInfoOutput.totalPages * products.pageInfoOutput.countOnPage}
+                            pageSize={products.pageInfoOutput.countOnPage}
+                            onChange={(page, pageSize) => {
+                                dispatch(galleryActions.fetchGallery.request({
+                                    data: {
+                                        CID: '',
+                                        ID: gallery_id,
+                                        Cust_ID: cust_id
+                                    }
+                                    , paginateInfo: {PageNumber: page, CountOnPage: pageSize}
+                                }));
 
-                        }}/>
+                            }}/>
+                }
+            </>
+            }
         </div>
     )
 }

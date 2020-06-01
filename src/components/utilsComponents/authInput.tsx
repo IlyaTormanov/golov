@@ -4,7 +4,8 @@ import styles from './authInputStyles.module.scss'
 export interface Props{
     placeholder?:string,
    typePass?:'password'
-    onChange:(value:string)=>void
+    onChange:(value:string)=>void,
+    value:string
 }
 
 export const AuthInput:FunctionComponent<Props>=(props)=>{
@@ -12,6 +13,8 @@ export const AuthInput:FunctionComponent<Props>=(props)=>{
         <input className={styles.input}
                type={!props.typePass?'text':props.typePass}
                placeholder={props.placeholder}
-               onChange={(event)=>props.onChange(event.target.value)} />
+               onChange={(event)=>props.onChange(event.target.value)}
+               value={props.value}
+        />
     )
 };

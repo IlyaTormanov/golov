@@ -9,17 +9,19 @@ import {RootStateType} from "../../../redux/root";
 import {useWindowSize} from "react-use";
 import {CategoryDropdown} from "../../category/categoryDropdown";
 import {pipe} from "fp-ts/es6/pipeable";
-import {init, last} from "fp-ts/es6/Array";
+import {init, last, takeLeft} from "fp-ts/es6/Array";
 import {getOrElse, map} from "fp-ts/es6/Option";
 import {history} from "../../../index";
 import {CategoryDropdownMobile} from "../../category/categoryDropdownMobile";
 import {Category} from "../../../interfaces";
-import {useParams} from "react-router";
+import {Route, Switch, useParams} from "react-router";
 import styles from './privateOfficeStyles.module.scss'
 import {PersonalHeader} from "../header/personalHeader";
 import {ShopInfo} from "../../../redux/shopInfo/actions";
 import axios from 'axios'
 import {api_v1} from "../../../api";
+import {Gallery} from "../../gallery/gallery";
+import {Product} from "../../category/Product";
 export interface Props{
 
 }
@@ -35,6 +37,7 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
        axios.get(api_v1.shopInfo).then(res=>{
            setAvatar(res.data)
        })
+
     },[])
     const [path, setPath] = useState<Category[]>([]);
 
@@ -45,23 +48,30 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
             <Sidebar onClose={setSidebar}/>
             }
             <PersonalHeader setSidebar={setSidebar}/>
-            {
-                width > 1068 ? <CategoryDropdown isCid={user_id} onClick={params => {
+            <div className={styles.content}>
+                <Switch>
+                <Route exact path={'/:cust_id/personalClient'} render={()=> width > 1068 ? <CategoryDropdown isCid={user_id} onClick={params => {
                         // setPath(params.isLast? pipe(params.path, init, getOrElse<Category[]>(() => [])): params.path);
                         setPath(params.path)
                         if (params.isLast) {
-                            pipe(params.path, last, map(item => history.push(`/${cust_id}/${item.id}`)))
+                            pipe(params.path, last, map(item => history.push(`/${cust_id}/personalClient/${item.id}`)))
 
                         }
                     }} path={path} /> :
-                    <CategoryDropdownMobile onClick={params => {
+                    <CategoryDropdownMobile isCid={user_id} onClick={params => {
                         setPath(params.isOpen? pipe(params.path, init, getOrElse<Category[]>(() => [])): params.path)
                         if (params.isLast) {
-                            pipe(params.path, last, map(item => history.push(`/gallery/${item.id}`)))
+                            pipe(params.path, last, map(item => history.push(`/${cust_id}/personalClient/${item.id}`)))
 
                         }
-                    }} path={path} />
-            }
+                    }} path={path} />}/>
+                    <Route path={'/:cust_id/personalClient/:gallery_id/:product_id'} render= {()=><Product isLc={true}/> }/>
+                    <Route path={'/:cust_id/personalClient/:gallery_id/'} render={()=><Gallery isLk={true} path={path} cid={user_id} onClick={(index) => setPath(takeLeft(index))}
+                                                                                               secondClick={setPath}/>}/>
+                </Switch>
+            </div>
+
+
 
             <Footer/>
         </div>

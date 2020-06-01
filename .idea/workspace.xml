@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/restore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/restore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/categoryDropdownMobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryDropdownMobile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/ProductCardStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/ProductCardStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/productCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/productCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/footer/footerStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/footer/footerStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/headerStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/headerStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOfficeStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOfficeStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProductStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProductStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/utilsComponents/authInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utilsComponents/authInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +85,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="C:\Users\User\golov\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -182,6 +202,10 @@
       <workItem from="1590761489207" duration="1013000" />
       <workItem from="1590764357244" duration="358000" />
       <workItem from="1590764716816" duration="187000" />
+      <workItem from="1590848707263" duration="265000" />
+      <workItem from="1590926317252" duration="25113000" />
+      <workItem from="1590996330077" duration="18257000" />
+      <workItem from="1591024711572" duration="238000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -289,16 +313,21 @@
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590676105568" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590471545021" />
-    <state x="700" y="282" width="724" height="610" key="find.popup" timestamp="1590740111432">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="656" y="252" width="751" height="603" key="find.popup" timestamp="1591021827734">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="656" y="252" width="751" height="603" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591021827734" />
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590408693343" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590492716529" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590740111432" />
-    <state x="617" y="240" key="run.anything.popup" timestamp="1590665331498">
+    <state x="691" y="293" key="git4idea.merge.GitPullDialog" timestamp="1591024948367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="617" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590665331498" />
+    <state x="691" y="293" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591024948367" />
+    <state x="617" y="240" width="672" height="677" key="run.anything.popup" timestamp="1591005549250">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="617" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591005549250" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590396967269" />
     <state x="662" y="270" key="run.anything.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591496133" />
     <state x="668" y="255" width="673" height="688" key="search.everywhere.popup" timestamp="1590758558075">

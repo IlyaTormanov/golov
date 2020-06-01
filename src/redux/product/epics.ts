@@ -41,7 +41,7 @@ export const addProduct: RootEpic = (action$, state$) => action$.pipe(
             return of(productActions.addProduct.failure({status: res.status}))
         }),
     )),
-    catchError((err) => from([productActions.addProduct.failure({status: 500}), productActions.addProductPreloader.success(false)]))
+    catchError(() => from([productActions.addProduct.failure({status: 500}), productActions.addProductPreloader.success(false)]))
 );
 
 

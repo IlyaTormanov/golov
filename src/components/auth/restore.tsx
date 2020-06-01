@@ -36,7 +36,7 @@ export const Restore:FunctionComponent<Props>=()=>{
                    buttonText={'Войти'}
                    form={
             <form>
-                <AuthInput placeholder={'Ваш мобильный номер'} onChange={value => setPhone(value)}/>
+                <AuthInput placeholder={'Ваш мобильный номер'} onChange={value => setPhone(value)} value={phone}/>
 
             </form>
         } onClick={submit}/>

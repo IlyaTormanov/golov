@@ -1,5 +1,5 @@
 import *  as React from "react";
-import {FunctionComponent} from "react";
+import {Component, FunctionComponent} from "react";
 import {ConnectedRouter} from "connected-react-router";
 import {Route, Switch} from "react-router-dom";
 import {CreateProduct} from "./components/static/productCreator/createProduct";
@@ -9,6 +9,8 @@ import {useEffect} from "react";
 import {shopInfoAction} from "./redux/shopInfo/actions";
 import {useDispatch} from "react-redux";
 import {PrivateOffice} from "./components/static/privateOffice/privateOffice";
+
+
 
 const Root: FunctionComponent = () => {
     const dispatch=useDispatch();

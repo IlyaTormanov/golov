@@ -9,6 +9,7 @@ import {prepareEntity} from "../../../utilsF/utils";
 import {productActions} from "../../../redux/product/actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUpload} from "@fortawesome/free-solid-svg-icons/faUpload";
+
 import {CategoryDropdown} from "../../category/categoryDropdown";
 import axios from 'axios'
 
@@ -22,6 +23,8 @@ import {pipe} from "fp-ts/es6/pipeable";
 import {chain, fromNullable, getOrElse, map} from "fp-ts/es6/Option";
 import {init} from "fp-ts/es6/Array";
 import {ClipLoader} from "react-spinners";
+import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+
 
 const append = <T extends any>(item: T) => (array: T[]) => [...array, item];
 
@@ -65,12 +68,22 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const [path, setPath] = useState<Category[]>([]);
     const [productData, setProductData] = useState(data);
     const mergeData = (changes: Partial<AddProduct>) => setProductData(prepareEntity(changes));
-    const main_image = useRef<HTMLImageElement>(null);
+
     const [validate, setValidate] = useState(false);
     const [images, setImages] = useState<{preview: string, name: string}[]>([]);
     const additional_image = useRef<HTMLImageElement>(null);
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
-    console.log( requestState,'rs')
+    const [mainImage,setMainImage]=useState('')
+
+        useEffect(()=>{
+            requestState===200&&setProductData(data)
+            if(requestState===200){
+                setMainImage('')
+                setImages([])
+            }
+            console.log(productData,'productData')
+        },[requestState,productData,mainImage])
+
     const main_image_form_data = new FormData();
     main_image_form_data.append('AppCode', cust_id);
     const add_image_form_data = new FormData();
@@ -93,7 +106,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     };
 
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
-    console.log(preloader,'preloader')
+
     const uploadImage = useCallback((img: File) => axios.post(
         'http://golowinskiy-api.bostil.ru/api/img/upload/',
         prepareToFormData({
@@ -109,9 +122,11 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     );
     return (
         <div className={styles.container}>
-            <h3 className={styles.title}>
-                Разместить объявление
-            </h3>
+            <div className={styles.md_center}>
+                <h3 className={styles.title}>
+                    Разместить объявление
+                </h3>
+            </div>
             <div className={styles.md_center}>
                 <div>
                     <Link to={`/${cust_id}`} style={{textDecoration: 'none'}}>
@@ -122,7 +137,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
             </div>
             <div className={styles.md_center}>
                 <div>
-                    <Link to={`/${cust_id}/personalClient`}>
+                    <Link to={`/${cust_id}/personalClient`} style={{textDecoration:'none'}}>
                         Вернуться в личный кабинет
                     </Link>
                 </div>
@@ -190,7 +205,9 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             <AuthInput onChange={value => {
                                 mergeData({TName: value, CID: userData.userId, Appcode: cust_id, Catalog: cust_id});
                                 !value.length ? setValidate(true) : setValidate(false);
-                            }}/>
+                            }}
+                             value={productData.TName}
+                            />
                             {validate &&
                             <p className={styles.validate}>Заполните наименование товара,услуги</p>
                             }
@@ -210,23 +227,28 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                         fromNullable(event.target.files),
                                         chain(list => fromNullable(list[0])),
                                         map(file => {
-                                            getUrl(file).then(name => main_image.current?.setAttribute('src', name));
-                                            uploadImage(file).then(() => mergeData({'TImageprev':file.name}));
+                                            getUrl(file).then(name =>setMainImage(name));
+                                            uploadImage(file).then(() => mergeData({TImageprev:file.name}));
                                         })
                                     );
-                                }}/>
-                                <img ref={main_image}/>
+                                }}
+                                />
+                                {mainImage&&
+                                <FontAwesomeIcon icon={faTimes} color={'white'} onClick={()=>setMainImage('')}
+                                                 style={{width: '10px', height: '10x', color: 'black',position:"absolute",marginLeft:'100px'}}/>
+                                }
+                                <img src={mainImage} />
                                 <FontAwesomeIcon icon={faUpload}/>
                             </div>
                         </div>
                     </div>
 
-                    <div className={styles.loading}>
+                    <div className={styles.item_loading}>
 
                         {requestState!==0&&
                         <div className={styles.loading_text}>
                             {!preloader&&
-                            <ClipLoader size={22}
+                            <ClipLoader size={18}
                                         color={"black"}/>
                             }
                             {
@@ -234,7 +256,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                     <div>
                                         Ошибка
                                     </div>:
-                                    <div>Товар успешно добавлен в корзину!</div>
+                                    <div>Товар успешно добавлен</div>
 
                             }
                         </div>
@@ -248,32 +270,42 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
 
-                        <div className={styles.form_wrapper}>
-                            {
-                                images.map(image => <div className={styles.image}>
-                                    <img src={image.preview} alt={image.name}/>
-                                    <FontAwesomeIcon icon={faUpload}/>
-                                </div>)
-                            }
 
-                            <div className={styles.image}>
-                                <input type={'file'} className={styles.upload_input} onChange={event => {
-                                    pipe(
-                                        fromNullable(event.target.files),
-                                        chain(list => fromNullable(list[0])),
-                                        map(file => {
-                                            uploadImage(file).then(() => getUrl(file).then(preview => {
-                                                setImages(append({
-                                                    preview,
-                                                    name: file.name,
+                        <div className={styles.form_wrapper} style={{flexDirection:'row',display:'flex'}}>
+                            <div className={styles.add_grid} style={{display:'grid'}}>
+                                {
+                                    images.map(image =>
+                                        <div style={{display:'flex'}}>
+                                        <div className={styles.image} >
+                                        <img src={image.preview}  ref={additional_image} key={image.name}/>
+                                        <FontAwesomeIcon icon={faUpload}/>
+                                    </div>
+                                            <FontAwesomeIcon icon={faTimes}
+                                                             color={'black'}
+                                                             style={{paddingLeft:'7px',cursor:'pointer'}}
+                                                             onClick={()=>setImages(prevState => ([...prevState.filter(i=>i.preview===image.preview?i.preview='':i.preview)]))}/>
+                                        </div>)
+                                }
+                                <div className={styles.image}>
+                                    <input type={'file'} className={styles.upload_input} onChange={event => {
+                                        pipe(
+                                            fromNullable(event.target.files),
+                                            chain(list => fromNullable(list[0])),
+                                            map(file => {
+                                                uploadImage(file).then(() => getUrl(file).then(preview => {
+                                                    setImages(append({
+                                                        preview,
+                                                        name: file.name,
+                                                    }))
                                                 }))
-                                            }))
-                                        })
-                                    );
-                                }}/>
-                                <img src={''} ref={additional_image}/>
-                                <FontAwesomeIcon icon={faUpload}/>
+                                            })
+                                        );
+                                    }}/>
+                                    <FontAwesomeIcon icon={faUpload}/>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -283,7 +315,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                                <textarea onChange={event => mergeData({TDescription: event.target.value})}>
+                                <textarea onChange={event => mergeData({TDescription: event.target.value})} value={productData.TDescription}>
 
                             </textarea>
                         </div>
@@ -295,11 +327,11 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TCost: value})}/>
+                            <AuthInput onChange={value => mergeData({TCost: value})} value={productData.TCost}/>
                         </div>
                     </div>
                     <div className={styles.submitBlock}>
-                        <button className={styles.button}
+                        <button className={productData.TName.length < 3?styles.button:styles.button_active}
                                 onClick={(e) => createProduct(e)}
                                 disabled={productData.TName.length < 3}>Разместить объявление
                         </button>
@@ -318,7 +350,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({video: value})}/>
+                            <AuthInput onChange={value => mergeData({video: value})} value={productData.video??''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -328,7 +360,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TypeProd: value})}/>
+                            <AuthInput onChange={value => mergeData({TypeProd: value})} value={productData.TypeProd??''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -338,7 +370,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({PrcNt: value})}/>
+                            <AuthInput onChange={value => mergeData({PrcNt: value})} value={productData.PrcNt??''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -348,7 +380,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TArticle: value})}/>
+                            <AuthInput onChange={value => mergeData({TArticle: value})} value={productData.TArticle??''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -358,7 +390,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TransformMech: value})}/>
+                            <AuthInput onChange={value => mergeData({TransformMech: value})} value={productData.TransformMech??''}/>
                         </div>
                     </div>
                 </form>
