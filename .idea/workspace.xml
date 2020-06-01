@@ -3,27 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/restore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/restore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/categoryDropdownMobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryDropdownMobile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gallery/ProductCardStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/ProductCardStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gallery/productCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/productCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/footer/footerStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/footer/footerStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/header/headerStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/headerStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOfficeStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOfficeStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProductStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProductStyles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utilsComponents/authInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utilsComponents/authInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,6 +271,10 @@
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
     <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
+    <state x="801" y="146" key="RollbackChangesDialog" timestamp="1591025762081">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="801" y="146" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591025762081" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1590764737060">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
