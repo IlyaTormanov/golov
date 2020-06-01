@@ -5,7 +5,6 @@ import {useParams} from "react-router";
 import {galleryActions} from "../../redux/gallery/actions";
 import {batch, useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../redux/root";
-import {shopInfoAction} from "../../redux/shopInfo/actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
 import {history} from "../../index";
@@ -22,15 +21,11 @@ import './product.css'
 import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
 import {findIndex, lookup} from "fp-ts/es6/Array";
 import {chain, isSome} from "fp-ts/es6/Option";
-import {productActions} from "../../redux/product/actions";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
-
 export interface ProductProps {
-
 }
-
 
 export interface AddToOrderType {
     Ctlg_Name: string
@@ -53,10 +48,8 @@ const addToOrderData: AddToOrderType = {
 };
 
 export type StorageItem = {
-
     id: 21669
     name: string
-
     price: string
     ctlg_No: string
     ctlg_Name: string
@@ -64,7 +57,6 @@ export type StorageItem = {
 }
 
 export interface Props {
-
 }
 
 const useQuery = () => {
@@ -99,9 +91,7 @@ export const Product: FunctionComponent<Props> = (props) => {
         JSON.parse(orderList)
     }
 
-
     const productData = useSelector((state: RootStateType) => state.gallery.galleryProduct);
-
     const [orderStatus, setOrderStatus] = useState(false);
     const toOrder = useCallback(() => {
         axios.get(`http://golowinskiy-api.bostil.ru/api/Load/${cust_id}`).then(res => {
@@ -144,32 +134,49 @@ export const Product: FunctionComponent<Props> = (props) => {
     }, [productList, product_id]);
     return (
         <div className={styles.detail_wrapper}>
-            <div className={`${styles.detail_product} ${productData.additionalImages?.length? '': styles.empty}`}>
+            <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
                 <div className={styles.close_icon} onClick={() => history.push(`/${cust_id}/${gallery_id}`)}>
-                    <FontAwesomeIcon icon={faTimes} color={'white'}
-                                     style={{width: '30px', height: '30px', color: '#95c6c3'}}/>
+                    <FontAwesomeIcon
+                        icon={faTimes}
+                        color={'white'}
+                        style={{
+                            width: '25px',
+                            height: '25px',
+                            color: '#95c6c3'
+                        }}
+                    />
                 </div>
-                {(isSome(prev) && isDesktop) &&
-                <FontAwesomeIcon className={styles.left} onClick={() => history.push(prev.value)} icon={faChevronLeft}
-                                 style={{width: '30px', height: '30px'}}/>
+                {isSome(prev) &&
+                <FontAwesomeIcon
+                    className={styles.left}
+                    onClick={() => history.push(prev.value)}
+                    icon={faChevronLeft}
+                    style={{
+                        width: '30px',
+                        height: '30px'
+                    }}
+                />
                 }
-                {(isSome(next) && isDesktop) &&
-                <FontAwesomeIcon className={styles.right} onClick={() => history.push(next.value)} icon={faChevronRight}
-                                 style={{width: '30px', height: '30px'}}/>
+                {isSome(next) &&
+                <FontAwesomeIcon
+                    className={styles.right}
+                    onClick={() => history.push(next.value)}
+                    icon={faChevronRight}
+                    style={{width: '30px', height: '30px'}}
+                />
                 }
                 <div className={styles.image}>
                     {preloader ?
-                        <ClipLoader size={36}
-                                    color={"white"}/>
+                        <ClipLoader
+                            size={36}
+                            color={"white"}
+                        />
                         :
-
                         <img
                             src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${currentImg ? currentImg : productData.t_imageprev}`}/>
-
-
                     }
                 </div>
-                {(isMobile&&productData.additionalImages) &&
+                {(isMobile && productData.additionalImages) &&
                 <div className={styles.additional}>
                     {productData.additionalImages?.map(img =>
                         <img
@@ -193,10 +200,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                         <div className={styles.to_cart} onClick={() => toOrder()}
                              style={{background: orderStatus ? '#37c509' : ' background: #f1173a;'}}>
                             {orderStatus ? <FontAwesomeIcon icon={faCheck} color={'white'}/> : <img src={cart}/>}
-                            <span>
-                                    {orderStatus ? 'В корзине' : 'В корзину'}
-
-                        </span>
+                            <span>{orderStatus ? 'В корзине' : 'В корзину'}</span>
                         </div>
                     </div>
                 </div>
@@ -234,9 +238,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                         </div>
                         <div className={styles.email}>
                             <img src={email}/>
-                            <span>
-                        golovinskiy-rf@mail.ru
-                    </span>
+                            <span>golovinskiy-rf@mail.ru</span>
                         </div>
                     </div>
                     <div className={styles.application}>

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,14 +49,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../golowinskiy-client" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -65,7 +67,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="D:\Projects\Bostil\golov\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -182,6 +184,8 @@
       <workItem from="1590761489207" duration="1013000" />
       <workItem from="1590764357244" duration="358000" />
       <workItem from="1590764716816" duration="187000" />
+      <workItem from="1590996593589" duration="1038000" />
+      <workItem from="1590997966678" duration="7304000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -201,7 +205,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -218,13 +222,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
@@ -262,10 +265,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="594" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589194634186" />
-    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590764902243">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="740" y="307" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591013682977">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
+    <state x="740" y="307" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1591013682977" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
     <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1590764737060">
@@ -289,10 +293,11 @@
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590676105568" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590471545021" />
-    <state x="700" y="282" width="724" height="610" key="find.popup" timestamp="1590740111432">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="656" y="284" width="751" height="609" key="find.popup" timestamp="1591006293433">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590408693343" />
+    <state x="656" y="284" width="751" height="609" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1591006293433" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590492716529" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590740111432" />
     <state x="617" y="240" key="run.anything.popup" timestamp="1590665331498">
