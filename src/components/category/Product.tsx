@@ -24,11 +24,8 @@ import {chain, isSome} from "fp-ts/es6/Option";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
-
 export interface ProductProps {
-
 }
-
 
 export interface AddToOrderType {
     Ctlg_Name: string
@@ -51,10 +48,8 @@ const addToOrderData: AddToOrderType = {
 };
 
 export type StorageItem = {
-
     id: 21669
     name: string
-
     price: string
     ctlg_No: string
     ctlg_Name: string
@@ -72,7 +67,6 @@ const useQuery = () => {
         isDesktop: width > 1086
     }
 };
-
 
 export const Product: FunctionComponent<Props> = (props) => {
     const dispatch = useDispatch();
@@ -110,7 +104,6 @@ export const Product: FunctionComponent<Props> = (props) => {
             }
         })
     }, [cust_id, userId, productData.prc_ID]);
-
 
     const [orderStatus, setOrderStatus] = useState(false);
     const toOrder = useCallback(() => {
@@ -152,6 +145,7 @@ export const Product: FunctionComponent<Props> = (props) => {
             next: chain((index: number) => lookup(index + 1, links))(index),
         }
     }, [productList, product_id]);
+    
     return (
         <div className={styles.detail_wrapper}>
             <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
