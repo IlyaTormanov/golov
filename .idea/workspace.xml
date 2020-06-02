@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/product/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +47,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1bl3PLSsBEcv4S5vJXG2Il2YeYg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -185,6 +191,9 @@
       <workItem from="1590926317252" duration="25113000" />
       <workItem from="1590996330077" duration="18257000" />
       <workItem from="1591024711572" duration="238000" />
+      <workItem from="1591028832053" duration="351000" />
+      <workItem from="1591029228560" duration="467000" />
+      <workItem from="1591080003267" duration="19760000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -200,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590471053861</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branch 'yuliya' of https://github.com/IlyaTormanov/golov&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/category/Product.tsx&#10;#&#9;src/components/category/productStyles.module.scss">
+      <created>1591026082843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591026082843</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,26 +237,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="Merge branch 'yuliya' of https://github.com/IlyaTormanov/golov&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/category/Product.tsx&#10;#&#9;src/components/category/productStyles.module.scss" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'yuliya' of https://github.com/IlyaTormanov/golov&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/category/Product.tsx&#10;#&#9;src/components/category/productStyles.module.scss" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#ESLint" timestamp="1589976874998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1589976874998" />
-    <state x="805" y="266" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1590742404983">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="765" y="236" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1591082936078">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590673063306" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591082936078" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590158999917" />
     <state x="805" y="266" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590587504542" />
     <state x="805" y="266" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590742404983" />
@@ -252,9 +270,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="662" y="226" width="652" height="653" key="#npm_start/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590490017166" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1590471728268">
+    <state x="585" y="0" key="CommitChangelistDialog2" timestamp="1591026081800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="585" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591026081800" />
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471728268" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1590502013607">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -282,9 +301,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1589354721023" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590471702930">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591026171252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591026171252" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471702930" />
     <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590565237599">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -295,6 +315,10 @@
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590676105568" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590471545021" />
+    <state x="767" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591027008970">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="767" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591027008970" />
     <state x="656" y="252" width="751" height="603" key="find.popup" timestamp="1591021827734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -302,14 +326,18 @@
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590408693343" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590492716529" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590740111432" />
+    <state x="749" y="151" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591027019043">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="749" y="151" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591027019043" />
     <state x="691" y="293" key="git4idea.merge.GitPullDialog" timestamp="1591024948367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="691" y="293" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591024948367" />
-    <state x="617" y="240" width="672" height="677" key="run.anything.popup" timestamp="1591005549250">
+    <state x="617" y="240" width="672" height="677" key="run.anything.popup" timestamp="1591088957652">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="617" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591005549250" />
+    <state x="617" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591088957652" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590396967269" />
     <state x="662" y="270" key="run.anything.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591496133" />
     <state x="668" y="255" width="673" height="688" key="search.everywhere.popup" timestamp="1590758558075">

@@ -18,7 +18,7 @@ export interface AddProduct {
     TArticle?: string
     TCost: string
     TDescription: string
-    TImageprev: string|null
+    TImageprev: string
     TName: string
     TransformMech?: string
     TypeProd?: string

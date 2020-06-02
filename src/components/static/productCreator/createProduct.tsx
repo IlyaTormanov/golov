@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FunctionComponent, useCallback, useEffect, useRef, useState} from "react";
+import {FunctionComponent, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import styles from './createProductStyles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/root";
@@ -66,37 +66,35 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const {width} = useWindowSize();
     const dispatch = useDispatch();
     const [path, setPath] = useState<Category[]>([]);
-    const [productData, setProductData] = useState(data);
+
     const mergeData = (changes: Partial<AddProduct>) => setProductData(prepareEntity(changes));
 
     const [validate, setValidate] = useState(false);
     const [images, setImages] = useState<{preview: string, name: string}[]>([]);
+
     const additional_image = useRef<HTMLImageElement>(null);
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
-    const [mainImage,setMainImage]=useState('')
+    const [mainImage,setMainImage]=useState('');
+
+    const redactData=JSON.parse(localStorage.getItem('redact_item')??'');
+    const [productData, setProductData] = useState(data);
+        useEffect(()=>{
+            redactData.product.Id&&setProductData(redactData.product)
+        },[redactData]);
 
         useEffect(()=>{
-            requestState===200&&setProductData(data)
+            requestState===200&&setProductData(data);
             if(requestState===200){
                 setMainImage('')
                 setImages([])
             }
-            console.log(productData,'productData')
         },[requestState,productData,mainImage])
 
     const main_image_form_data = new FormData();
     main_image_form_data.append('AppCode', cust_id);
     const add_image_form_data = new FormData();
     add_image_form_data.append('appcode', cust_id);
-    const addMainImage = useCallback(() => {
-        axios.post('http://golowinskiy-api.bostil.ru/api/img/upload/', main_image_form_data, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }).then(res =>
-            console.log(res.data)
-        )
-    }, [main_image_form_data]);
+
 
     const createProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -104,6 +102,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
         dispatch(productActions.addProduct.request({product: productData, images: images.map(image => image.name)}))
 
     };
+
 
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
 
@@ -163,6 +162,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                 </div>
 
             </div>
+            { !redactData.product.Id&&
             <div className={styles.select_category}>
                 {width < 1068 ?
                     <CategoryDropdownMobile onClick={params => {
@@ -193,6 +193,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                     />
                 }
             </div>
+            }
+
             <div className={styles.form_wrapper_div}>
                 <form>
                     <div className={styles.item}>
@@ -233,11 +235,11 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                     );
                                 }}
                                 />
-                                {mainImage&&
-                                <FontAwesomeIcon icon={faTimes} color={'white'} onClick={()=>setMainImage('')}
+                                {(mainImage||redactData.product.TImageprev)&&
+                                <FontAwesomeIcon icon={faTimes} color={'white'} onClick={()=>redactData.product.TImageprev?dispatch(productActions.removeMainImage('')):setMainImage('')}
                                                  style={{width: '10px', height: '10x', color: 'black',position:"absolute",marginLeft:'100px'}}/>
                                 }
-                                <img src={mainImage} />
+                                <img src={redactData.product.TImageprev?`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${redactData.product.TImageprev}`:mainImage} />
                                 <FontAwesomeIcon icon={faUpload}/>
                             </div>
                         </div>
@@ -266,26 +268,41 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                     <div className={styles.item}>
                         <div className={styles.label_wrapper}>
                             <label>
-                                Дополнительная фотография
+                                Доп. фотографии
                             </label>
                         </div>
 
 
                         <div className={styles.form_wrapper} style={{flexDirection:'row',display:'flex'}}>
                             <div className={styles.add_grid} style={{display:'grid'}}>
+
                                 {
-                                    images.map(image =>
+                                    redactData.images.length?redactData.images.map((image:string)=>
                                         <div style={{display:'flex'}}>
-                                        <div className={styles.image} >
-                                        <img src={image.preview}  ref={additional_image} key={image.name}/>
-                                        <FontAwesomeIcon icon={faUpload}/>
-                                    </div>
+                                            <div className={styles.image} >
+                                                <img src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${image}`}  ref={additional_image} key={image}/>
+                                                <FontAwesomeIcon icon={faUpload}/>
+                                            </div>
                                             <FontAwesomeIcon icon={faTimes}
                                                              color={'black'}
                                                              style={{paddingLeft:'7px',cursor:'pointer'}}
-                                                             onClick={()=>setImages(prevState => ([...prevState.filter(i=>i.preview===image.preview?i.preview='':i.preview)]))}/>
-                                        </div>)
+                                                             onClick={()=>dispatch(productActions.removeAdditionalImages(image))}/>
+                                        </div>
+                                    ):
+                                        images.map(image =>
+                                            <div style={{display:'flex'}}>
+                                                <div className={styles.image} >
+                                                    <img src={image.preview}  ref={additional_image} key={image.name}/>
+                                                    <FontAwesomeIcon icon={faUpload}/>
+                                                </div>
+                                                <FontAwesomeIcon icon={faTimes}
+                                                                 color={'black'}
+                                                                 style={{paddingLeft:'7px',cursor:'pointer'}}
+                                                                 onClick={()=>setImages(prevState => ([...prevState.filter(i=>i.preview===image.preview?i.preview='':i.preview)]))}/>
+                                            </div>)
+
                                 }
+
                                 <div className={styles.image}>
                                     <input type={'file'} className={styles.upload_input} onChange={event => {
                                         pipe(
@@ -293,7 +310,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                             chain(list => fromNullable(list[0])),
                                             map(file => {
                                                 uploadImage(file).then(() => getUrl(file).then(preview => {
-                                                    setImages(append({
+                                                    redactData.images.length?dispatch(productActions.addAdditionalImages(file.name)):setImages(append({
                                                         preview,
                                                         name: file.name,
                                                     }))

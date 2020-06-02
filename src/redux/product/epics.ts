@@ -6,7 +6,7 @@ import {productActions} from "./actions";
 import {ajax} from "rxjs/ajax";
 import {api_v1} from "../../api";
 import {concat, EMPTY, forkJoin, from, of, throwError} from "rxjs";
-
+import {goBack} from "connected-react-router";
 export const prepareToFormData = (data: Object) => {
     const result = new FormData();
     Object.entries(data).forEach(([key, value]) => result.append(key, value))
@@ -19,6 +19,7 @@ export const addProduct: RootEpic = (action$, state$) => action$.pipe(
         "Content-Type": "application/json"
     }).pipe(
         mergeMap(res => {
+            const isRedact=state$.value.product.redactProduct.product.Id;
             if (res.status === 200) {
                 forkJoin(images.map((tImage, imageOrder) => ajax.post(api_v1.additionalImage, {
                     catalog: product.Catalog,
@@ -36,6 +37,8 @@ export const addProduct: RootEpic = (action$, state$) => action$.pipe(
                     of(productActions.addProduct.success({status: 0})).pipe(
                         delay(3000)
                     ),
+                    isRedact?of(goBack()):EMPTY
+
                 )
             }
             return of(productActions.addProduct.failure({status: res.status}))

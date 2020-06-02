@@ -42,6 +42,7 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
     const [path, setPath] = useState<Category[]>([]);
 
     return(
+
         <div className={styles.office}
              style={{backgroundImage: ` url(http://golowinskiy-api.bostil.ru${avatar?.mainImage}) `}}>
             {(sidebar&&width<1086)&&
