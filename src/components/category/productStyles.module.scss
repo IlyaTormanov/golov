@@ -4,6 +4,11 @@ $classes: image aside info left right additional;
   width: 100vw;
   height: 100%;
 
+  @media screen and (max-width: 600px) {
+    background: #fff;
+    padding: 1% 0;
+  }
+
   .detail_product {
     @each $class in $classes {
       .#{$class} {
@@ -13,7 +18,7 @@ $classes: image aside info left right additional;
 
     background: #00192f;
     width: 98%;
-    margin: 1%;
+    margin: 0 auto;
     z-index: 100;
     position: relative;
     top: 0;
@@ -28,20 +33,19 @@ $classes: image aside info left right additional;
       grid-template-rows: repeat(4, max-content);
       grid-template-columns: 1fr;
       grid-template-areas: 'left' 'image' 'right''additional' 'info' 'aside';
-      width: 100%;
-      margin: 0;
       &.empty {
         grid-template-rows: 95vh repeat(2, max-content);
         grid-template-areas: 'left' 'image' 'right' 'info' 'aside';
       }
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 600px) {
       display: flex;
       flex-direction: column;
 
       .image {
-        height: 80vh;
+        min-height: 45vh;
+        max-height: 50vh;
       }
     }
 
@@ -57,6 +61,7 @@ $classes: image aside info left right additional;
 
     @media screen and (max-width: 480px) {
       top: 1%;
+      background: #7f7f7f;
     }
 
     .left, .right {
@@ -64,10 +69,10 @@ $classes: image aside info left right additional;
       color: white;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 600px) {
       .left, .right {
         position: absolute;
-        top: 30%;
+        top: 25%;
       }
       .left {
         left: 0;
@@ -84,16 +89,10 @@ $classes: image aside info left right additional;
       justify-content: center;
       min-width: 0;
 
-      @media screen and (max-width: 480px) {
-        img {
-          max-width: 80%;
-        }
-      }
-
       @media screen and (max-width: 600px) {
         img {
-          min-width: 0;
-          //height: 350px;
+          max-width: 80%;
+          max-height: 80%;
         }
       }
 
@@ -142,13 +141,10 @@ $classes: image aside info left right additional;
       }
 
       .button_wrapper {
-        background: red;
-
         .to_cart {
-
           @media screen and (max-width: 1068px) {
             max-width: 195px;
-            margin: 0 auto 0px;
+            margin: 0 auto 0;
             padding: 6px;
           }
           display: flex;

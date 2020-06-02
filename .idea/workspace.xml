@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../golowinskiy-client" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -64,7 +65,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="ts.external.directory.path" value="C:\Users\User\golov\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Projects\Bostil\golov\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -185,6 +186,7 @@
       <workItem from="1590926317252" duration="25113000" />
       <workItem from="1590996330077" duration="18257000" />
       <workItem from="1591024711572" duration="238000" />
+      <workItem from="1591081600857" duration="2691000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -204,7 +206,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -264,10 +266,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="594" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589194634186" />
-    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590764902243">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="740" y="307" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591081881548">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
+    <state x="740" y="307" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591081881548" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
     <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
     <state x="801" y="146" key="RollbackChangesDialog" timestamp="1591025762081">
