@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/product/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +189,7 @@
       <workItem from="1591024711572" duration="238000" />
       <workItem from="1591028832053" duration="351000" />
       <workItem from="1591029228560" duration="467000" />
-      <workItem from="1591080003267" duration="19760000" />
+      <workItem from="1591080003267" duration="26387000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -216,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591026082843</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merge branch 'yuliya' of https://github.com/IlyaTormanov/golov&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/category/Product.tsx&#10;#&#9;src/components/category/productStyles.module.scss">
+      <created>1591112402408</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591112402408</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,10 +258,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1589976874998" />
-    <state x="765" y="236" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1591082936078">
+    <state x="765" y="236" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1591119700993">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591082936078" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591119700993" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590158999917" />
     <state x="805" y="266" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590587504542" />
     <state x="805" y="266" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590742404983" />
@@ -270,10 +273,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="662" y="226" width="652" height="653" key="#npm_start/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590490017166" />
-    <state x="585" y="0" key="CommitChangelistDialog2" timestamp="1591026081800">
+    <state x="585" y="0" key="CommitChangelistDialog2" timestamp="1591112401493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591026081800" />
+    <state x="585" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591112401493" />
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471728268" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1590502013607">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -301,10 +304,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1589354721023" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591026171252">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1591112404192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591026171252" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591112404192" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471702930" />
     <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590565237599">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -340,10 +343,10 @@
     <state x="617" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591088957652" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590396967269" />
     <state x="662" y="270" key="run.anything.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591496133" />
-    <state x="668" y="255" width="673" height="688" key="search.everywhere.popup" timestamp="1590758558075">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup" timestamp="1591113789018">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590653594629" />
+    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591113789018" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590159060537" />
     <state x="668" y="255" width="672" height="687" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591507774" />
     <state x="668" y="255" width="673" height="688" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590758558075" />

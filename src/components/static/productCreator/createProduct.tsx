@@ -14,7 +14,7 @@ import {CategoryDropdown} from "../../category/categoryDropdown";
 import axios from 'axios'
 
 import {Link} from "react-router-dom";
-import {useWindowSize} from "react-use";
+import {useSetState, useWindowSize} from "react-use";
 import {CategoryDropdownMobile} from "../../category/categoryDropdownMobile";
 import {useParams} from "react-router";
 import {history} from "../../../index";
@@ -59,6 +59,8 @@ export const data: AddProduct = {
     video: ""
 
 };
+const redactData=JSON.parse(localStorage.getItem('redact_item')??'');
+
 
 export const CreateProduct: FunctionComponent<Props> = () => {
     const userData = useSelector((state: RootStateType) => state.auth.auth);
@@ -67,7 +69,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const dispatch = useDispatch();
     const [path, setPath] = useState<Category[]>([]);
 
-    const mergeData = (changes: Partial<AddProduct>) => setProductData(prepareEntity(changes));
+    const mergeData = (changes: Partial<AddProduct>|{product: AddProduct, images: string[]}) => setProductData(prepareEntity(changes));
 
     const [validate, setValidate] = useState(false);
     const [images, setImages] = useState<{preview: string, name: string}[]>([]);
@@ -76,32 +78,56 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
     const [mainImage,setMainImage]=useState('');
 
-    const redactData=JSON.parse(localStorage.getItem('redact_item')??'');
-    const [productData, setProductData] = useState(data);
-        useEffect(()=>{
-            redactData.product.Id&&setProductData(redactData.product)
-        },[redactData]);
 
+    const [productData, setProductData] = useState<AddProduct>(data);
+    const [redactProductData,setRedactProductData]=useSetState<{product: AddProduct, images: string[]}>({
+        images: [''],
+        product: {
+            Appcode: "",
+            CID: "",
+            Catalog: "",
+            Ctlg_Name: "",
+            Id: "",
+            PrcNt: "",
+            TArticle: "",
+            TCost: "",
+            TDescription: "",
+            TImageprev: "",
+            TName: "",
+            TransformMech: "",
+            TypeProd: "",
+            video: ""
+        }
+    })
+        useEffect(()=>{
+            redactData&&setProductData(redactData)
+        },[productData,redactData]);
+            console.log(productData)
         useEffect(()=>{
             requestState===200&&setProductData(data);
             if(requestState===200){
                 setMainImage('')
                 setImages([])
             }
-        },[requestState,productData,mainImage])
+        },[requestState,productData])
 
     const main_image_form_data = new FormData();
     main_image_form_data.append('AppCode', cust_id);
     const add_image_form_data = new FormData();
     add_image_form_data.append('appcode', cust_id);
 
-
+    const [redactAddImages,setRedactAddImages]=useState<string []>(redactData.images)
     const createProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         dispatch(productActions.addProductPreloader.request(false))
         dispatch(productActions.addProduct.request({product: productData, images: images.map(image => image.name)}))
 
     };
+
+    const updateProduct=useCallback((e: React.MouseEvent<HTMLButtonElement>)=>{
+        e.preventDefault();
+        dispatch(productActions.redactProduct.request({product:productData,images:redactAddImages}))
+    },[productData,redactAddImages])
 
 
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
@@ -119,6 +145,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
             },
         }), [add_image_form_data]
     );
+
     return (
         <div className={styles.container}>
             <div className={styles.md_center}>
@@ -162,7 +189,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                 </div>
 
             </div>
-            { !redactData.product.Id&&
+
+            { !productData.product.Id&&
             <div className={styles.select_category}>
                 {width < 1068 ?
                     <CategoryDropdownMobile onClick={params => {
@@ -277,7 +305,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             <div className={styles.add_grid} style={{display:'grid'}}>
 
                                 {
-                                    redactData.images.length?redactData.images.map((image:string)=>
+                                    redactAddImages.length?redactAddImages.map((image:string)=>
                                         <div style={{display:'flex'}}>
                                             <div className={styles.image} >
                                                 <img src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${image}`}  ref={additional_image} key={image}/>
@@ -286,7 +314,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                             <FontAwesomeIcon icon={faTimes}
                                                              color={'black'}
                                                              style={{paddingLeft:'7px',cursor:'pointer'}}
-                                                             onClick={()=>dispatch(productActions.removeAdditionalImages(image))}/>
+                                                             onClick={()=>setRedactAddImages(prevState => [...prevState.filter(img=>img!==image)])}/>
                                         </div>
                                     ):
                                         images.map(image =>
@@ -310,7 +338,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                             chain(list => fromNullable(list[0])),
                                             map(file => {
                                                 uploadImage(file).then(() => getUrl(file).then(preview => {
-                                                    redactData.images.length?dispatch(productActions.addAdditionalImages(file.name)):setImages(append({
+                                                    redactData.images.length?setRedactAddImages(prevState => [...prevState,file.name]):setImages(append({
                                                         preview,
                                                         name: file.name,
                                                     }))
@@ -348,10 +376,10 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                         </div>
                     </div>
                     <div className={styles.submitBlock}>
-                        <button className={productData.TName.length < 3?styles.button:styles.button_active}
-                                onClick={(e) => createProduct(e)}
-                                disabled={productData.TName.length < 3}>Разместить объявление
-                        </button>
+                        {/*<button className={productData.TName.length < 3?styles.button:styles.button_active}*/}
+                        {/*        onClick={(e) => redactData.product.Id?updateProduct(e):createProduct(e)}*/}
+                        {/*        disabled={productData.TName.length < 3}>Разместить объявление*/}
+                        {/*</button>*/}
                     </div>
                     <div className={styles.row_other}>
                         <div>
