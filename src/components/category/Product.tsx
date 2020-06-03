@@ -80,7 +80,7 @@ export const Product: FunctionComponent<Props> = (props) => {
     const userId = useSelector((state: RootStateType) => state.auth.auth)
     const {cust_id, product_id, gallery_id} = useParams<{ cust_id: string, product_id: string, gallery_id: string }>();
     const {isMobile, isDesktop} = useQuery();
-
+    const {width} = useWindowSize();
     useEffect(() => {
         batch(() => {
             dispatch(galleryActions.fetchGalleryProduct.request({
@@ -88,9 +88,12 @@ export const Product: FunctionComponent<Props> = (props) => {
                 cust_ID: cust_id,
                 prc_ID: product_id
             }))
+            width<1086?dispatch(productActions.hasFooter(false)):dispatch(productActions.hasFooter(true));
+
             dispatch(galleryActions.productPreloader.success(true))
         })
     }, [cust_id, product_id]);
+
 
     const orderList = localStorage.getItem('orderList');
     if (orderList != null) {
@@ -196,7 +199,7 @@ export const Product: FunctionComponent<Props> = (props) => {
         <div className={styles.detail_wrapper}>
             <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
                 <div className={styles.close_icon}
-                     onClick={() => history.push(props.isLc ? `/${cust_id}/personalClient/${gallery_id}` : `/${cust_id}/${gallery_id}`)}>
+                     onClick={() =>{ dispatch(productActions.hasFooter(true));history.push(props.isLc ? `/${cust_id}/personalClient/${gallery_id}` : `/${cust_id}/${gallery_id}`)}}>
                     <FontAwesomeIcon
                         icon={faTimes}
                         color={'white'}

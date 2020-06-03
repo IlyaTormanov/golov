@@ -29,7 +29,7 @@ export interface Props{
 
 export const PrivateOffice:FunctionComponent<Props>=()=>{
     const [sidebar,setSidebar]=useState(false);
-
+    const isFooter=useSelector((state:RootStateType)=>state.product.footerState);
     const {width} = useWindowSize();
     const user_id=useSelector((state:RootStateType)=>state.auth.auth.userId)
     const {cust_id} = useParams<{  cust_id: string }>();
@@ -78,7 +78,11 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
 
 
 
-            <Footer/>
+            {
+                (isFooter)&&
+                <Footer/>
+            }
+
         </div>
     )
 }

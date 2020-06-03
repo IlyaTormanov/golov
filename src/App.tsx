@@ -25,7 +25,7 @@ import {api_v1} from "./api";
 import axios from 'axios'
 
 function App() {
-
+    const isFooter=useSelector((state:RootStateType)=>state.product.footerState);
     const {width} = useWindowSize();
     const [sidebar, setSidebar] = useState(false);
     const [path, setPath] = useState<Category[]>([]);
@@ -73,7 +73,11 @@ function App() {
 
                 </Switch>
             </div>
-            <Footer/>
+            {
+                (isFooter)&&
+                <Footer/>
+            }
+
         </div>
     );
 }

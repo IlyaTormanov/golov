@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/static/productCreator/editProduct.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/product/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +220,7 @@
       <workItem from="1590996330077" duration="18257000" />
       <workItem from="1591024711572" duration="238000" />
       <workItem from="1591081600857" duration="8417000" />
-      <workItem from="1591189606033" duration="2009000" />
+      <workItem from="1591189606033" duration="4721000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>

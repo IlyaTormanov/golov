@@ -29,11 +29,15 @@ export const productActions={
         '@PREALOADER/ADD_PRODUCT_PRELOADER_SUCCESS',
         '@PREALOADER/ADD_PRODUCT_PRELOADER_FAILURE'
 
-    )<boolean,boolean,undefined>()
-
+    )<boolean,boolean,undefined>(),
+  hasFooter:createAction(
+      '@UTILS/HAS_FOOTER'
+  )<boolean>()
 };
 export type ProductActionType=ActionType<typeof productActions>
 export const productReducer=combineReducers({
+  footerState:createReducer<boolean,ProductActionType>(true)
+      .handleAction(productActions.hasFooter,(state,action)=>action.payload),
   productSuccess:createReducer<{status:number},ProductActionType>({status:0})
       .handleAction(productActions.addProduct.success,(state,action)=>action.payload),
   productFailure:createReducer<{status:number},ProductActionType>({status:0})
