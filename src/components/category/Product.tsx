@@ -254,8 +254,8 @@ export const Product: FunctionComponent<Props> = (props) => {
                         </p>
                     </div>
                     {props.isLc ?
-                        <div className={styles.button_grp}>
-                            <div style={{background: '#37c509'}} onClick={()=>setRedactProduct()}>
+                        <div className={styles.button_grp} style={{justifyContent:(width>1078&&width>360)?"flex-end":"center"}}>
+                            <div style={{background: '#37c509',marginRight:(width>1078&&width>360)?'10px':0}} onClick={()=>setRedactProduct()} >
                                 <span>
                                     Редактировать
                                 </span>

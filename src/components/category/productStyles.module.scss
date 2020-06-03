@@ -187,6 +187,10 @@ $classes: image aside info left right additional;
           cursor: pointer;
           color: #ffffff;
           font-size: 25px;
+          @media screen and (max-width:400px){
+            max-width:100px !important;
+            font-size:18px;
+          }
           @media screen and (max-width: 1078px) {
             max-width: 195px;
             margin: 0 auto 0px;
