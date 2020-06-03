@@ -2,6 +2,7 @@
   @media screen and (max-width:480px){
     width:65%;
   }
+
   width: 50%;
   position: fixed;
   z-index: 100000;
@@ -15,7 +16,7 @@
     width:100%;
     justify-content: flex-end;
     display:flex;
-    font-size:22px;
+    font-size:22px !important;
   }
   .content{
     display:flex;
@@ -28,7 +29,7 @@
         margin: 10px 0;
         color:white;
        text-decoration: none;
-        font-size: 20px;
+
         span{
           padding-left:7px;
         }
@@ -36,13 +37,13 @@
       .add{
         cursor: pointer;
         margin: 10px 0;
-        font-size: 20px;
+
         text-decoration: none;
         color:white;
       }
     }
     .last_row{
-      font-size:20px;
+
       position: absolute;
       bottom: 5%;
       left: 0;

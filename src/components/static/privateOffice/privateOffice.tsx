@@ -47,7 +47,7 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
         <div className={styles.office}
              style={{backgroundImage: ` url(http://golowinskiy-api.bostil.ru${avatar?.mainImage}) `}}>
             {(sidebar&&width<1086)&&
-            <Sidebar onClose={setSidebar}/>
+            <Sidebar onClose={setSidebar} isLk={true}/>
             }
             <PersonalHeader setSidebar={setSidebar}/>
             <div className={styles.content}>

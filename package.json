@@ -28,6 +28,7 @@
     "rc-pagination": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-id-swiper": "^3.0.0",
     "react-loadingg": "^1.7.2",
     "react-nested-menu": "^1.0.9",
     "react-preloaders": "^3.0.3",
@@ -44,6 +45,7 @@
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",
     "slick-carousel": "^1.8.1",
+    "swiper": "^5.4.2",
     "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.5"
   },

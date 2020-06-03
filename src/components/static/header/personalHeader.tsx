@@ -45,13 +45,8 @@ export const PersonalHeader:FunctionComponent<Props>=(props)=>{
                 <div className={styles.logo_block}>
                     <img src={logo}/>
                     <span style={{paddingLeft:'7px'}}>
-                       <div className={styles.welcome_mobile}>
-                            <span>
-                            Добро пожаловать в
-                        </span>
-                            <span>
-                                портал Головинского района
-                            </span>
+                       <div className={styles.welcome_mobile} style={{fontSize:'16px'}}>
+                         Личный кабинет
                        </div>
                     </span>
                 </div>:
@@ -68,7 +63,7 @@ export const PersonalHeader:FunctionComponent<Props>=(props)=>{
             {width>1068&&
             <div className={styles.header_content_list_item}>
                 <div className={styles.header_content_list_item_welcome}>
-                    Добро пожаловать!
+                    Личный кабинет
                 </div>
             </div>
             }

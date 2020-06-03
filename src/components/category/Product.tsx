@@ -5,7 +5,6 @@ import {useParams} from "react-router";
 import {galleryActions} from "../../redux/gallery/actions";
 import {batch, useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../redux/root";
-import {shopInfoAction} from "../../redux/shopInfo/actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
 import {history} from "../../index";
@@ -25,10 +24,8 @@ import {chain, isSome} from "fp-ts/es6/Option";
 import {productActions} from "../../redux/product/actions";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import {api_v1} from "../../api";
-import {boolean} from "fp-ts";
-
-
+import 'swiper/swiper.scss'
+import Swiper from 'react-id-swiper';
 export interface ProductProps {
 }
 
@@ -202,8 +199,8 @@ export const Product: FunctionComponent<Props> = (props) => {
                      onClick={() =>{ dispatch(productActions.hasFooter(true));history.push(props.isLc ? `/${cust_id}/personalClient/${gallery_id}` : `/${cust_id}/${gallery_id}`)}}>
                     <FontAwesomeIcon
                         icon={faTimes}
-                        color={'white'}
-                        style={{width: '30px', height: '30px', color: '#95c6c3'}}
+                        color={'#ffffff'}
+                        style={{width: '30px', height: '30px'}}
                     />
                 </div>
                 {(isSome(prev)) &&
@@ -234,15 +231,19 @@ export const Product: FunctionComponent<Props> = (props) => {
                 </div>
                 {(isMobile && productData.additionalImages) &&
                 <div className={styles.additional}>
-                    {productData.additionalImages?.map(img =>
-                        <img
-                            src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
-                            onMouseEnter={() => setCurrentImg(img.t_image)}
-                            onMouseLeave={() => setCurrentImg('')}
-                        />
-                    )}
+                      {/*<Swiper  >*/}
+                          {productData.additionalImages?.map(img =>
+                              <img
+                                  src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                  onMouseEnter={() => setCurrentImg(img.t_image)}
+                                  onMouseLeave={() => setCurrentImg('')}
+                              />
+                          )}
+                      {/*</Swiper>*/}
                 </div>
+
                 }
+
                 <div className={styles.info}>
                     <div className={styles.detail_product_item_info_price}>
                         <h4>
@@ -266,7 +267,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                             </div>
                         </div> :
                         <div className={styles.button_wrapper}
-                             style={{background: orderStatus ? '#37c509' : '#f1173a'}}>
+                             style={{background: orderStatus ? '#37c509' : '#f1173a',maxWidth:'195px',margin:'0 auto'}}>
                             <div className={styles.to_cart} onClick={() => toOrder()}
                             >
                                 {orderStatus ? <FontAwesomeIcon icon={faCheck} color={'white'}/> : <img src={cart}/>}

@@ -31,7 +31,7 @@ export interface Props {
 }
 
 
-const redactItem=JSON.parse(localStorage.getItem('redact_item') as string)
+
 export const EditProduct: FunctionComponent<Props> = () => {
 
     const dispatch = useDispatch();
@@ -46,24 +46,26 @@ export const EditProduct: FunctionComponent<Props> = () => {
     const additional_image = useRef<HTMLImageElement>(null);
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
 
-
+    const redactItem=JSON.parse(localStorage.getItem('redact_item') as string)
     const prepareStorage=useMemo(()=>{
         return redactItem.images.map((item: string )=>{return {preview:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`,
             name:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`}})
-    },[redactItem]);
+    },[]);
+
     const [mainImage,setMainImage]=useState('');
     useEffect(()=>{
         redactItem.product.Id&&setRedactData(redactItem.product)
         redactItem.images.length&&setImages(prepareStorage)
         redactItem.product.TImageprev&&setMainImage(`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${redactItem.product.TImageprev}`)
-    },[redactItem]);
+    },[]);
 
 
-    console.log(mainImage)
+    console.log(redactItem,'redactIetem')
     const updateProduct = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const filterImages=images.filter(image=>image.name!==image.preview);
       localStorage.setItem('increment',JSON.stringify(images.length-filterImages.length));
+        dispatch(productActions.addProductPreloader.request(false))
         dispatch(productActions.redactProduct.request({product: redactData, images: filterImages.map(image => image.name)}))
     }, [redactData]);
 
@@ -87,7 +89,7 @@ export const EditProduct: FunctionComponent<Props> = () => {
         }), [add_image_form_data]
     );
 
-
+    const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
     return (
         <div className={styles.container}>
             <div className={styles.md_center}>
@@ -192,22 +194,22 @@ export const EditProduct: FunctionComponent<Props> = () => {
 
                     <div className={styles.item_loading}>
 
-                        {/*{requestState !== 0 &&*/}
-                        {/*<div className={styles.loading_text}>*/}
-                        {/*    {!preloader &&*/}
-                        {/*    <ClipLoader size={18}*/}
-                        {/*                color={"black"}/>*/}
-                        {/*    }*/}
-                        {/*    {*/}
-                        {/*        (requestState && requestState !== 200) ?*/}
-                        {/*            <div>*/}
-                        {/*                Ошибка*/}
-                        {/*            </div> :*/}
-                        {/*            <div>Товар успешно добавлен</div>*/}
+                        {requestState !== 0 &&
+                        <div className={styles.loading_text}>
+                            {!preloader &&
+                            <ClipLoader size={18}
+                                        color={"black"}/>
+                            }
+                            {
+                                (requestState && requestState !== 200) ?
+                                    <div>
+                                        Ошибка
+                                    </div> :
+                                    <div>Товар успешно добавлен</div>
 
-                        {/*    }*/}
-                        {/*</div>*/}
-                        {/*}*/}
+                            }
+                        </div>
+                        }
                     </div>
 
                     <div className={styles.item}>

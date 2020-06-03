@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/category/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/categoryMobileStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryMobileStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/mobileItemStyles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/mobileItemStyles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/galleryStyles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/personalHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/personalHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/header/sidebarStyles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/privateOffice/privateOffice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/product/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/createProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/static/productCreator/editProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/static/productCreator/editProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/product/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/product/epics.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,13 +62,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../golowinskiy-client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -215,12 +210,6 @@
       <workItem from="1591184617656" duration="1777000" />
       <workItem from="1591186424603" duration="1792000" />
       <workItem from="1591188229869" duration="508000" />
-      <workItem from="1590848707263" duration="265000" />
-      <workItem from="1590926317252" duration="25113000" />
-      <workItem from="1590996330077" duration="18257000" />
-      <workItem from="1591024711572" duration="238000" />
-      <workItem from="1591081600857" duration="8417000" />
-      <workItem from="1591189606033" duration="4721000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -240,7 +229,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -257,12 +246,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
@@ -300,13 +290,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="594" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589194634186" />
-    <state x="740" y="307" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591190364335">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590764902243">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
-    <state x="740" y="307" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591190364335" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
     <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1591199555579">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591199555579" />
+    <state x="664" y="227" key="MultipleFileMergeDialog" timestamp="1591199555584">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="664" y="227" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591199555584" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1590764737060">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -328,23 +325,26 @@
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590676105568" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590471545021" />
-    <state x="656" y="284" width="751" height="609" key="find.popup" timestamp="1591187918332">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="700" y="282" width="724" height="610" key="find.popup" timestamp="1591187485488">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590408693343" />
-    <state x="656" y="284" width="751" height="609" key="find.popup/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591187918332" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590492716529" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1591187485488" />
+    <state x="749" y="151" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591199534703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="749" y="151" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591199534703" />
     <state x="617" y="240" key="run.anything.popup" timestamp="1590665331498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="617" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590665331498" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590396967269" />
     <state x="662" y="270" key="run.anything.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591496133" />
-    <state x="668" y="255" width="673" height="688" key="search.everywhere.popup" timestamp="1590758558075">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup" timestamp="1591214414827">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590653594629" />
+    <state x="623" y="225" width="697" height="679" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591214414827" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590159060537" />
     <state x="668" y="255" width="672" height="687" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590591507774" />
     <state x="668" y="255" width="673" height="688" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590758558075" />

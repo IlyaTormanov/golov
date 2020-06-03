@@ -89,29 +89,32 @@ export const Header: FunctionComponent<Props>= (props) => {
                     <button onClick={()=>goToAddProduct()}>Подать объявление</button>
                     }
 
-                    <div className={styles.cart_block} onClick={()=>history.push(`/${cust_id}/order`)}>
-                        <img src={cart} className={styles.cart}/>
-                        {width>1068&&
-                        <div className={styles.cart_description}>
-                            <div>
+                    {width>1086?
+                        <div className={styles.cart_block} onClick={()=>history.push(`/${cust_id}/order`)}>
+                            <img src={cart} className={styles.cart}/>
+                            {width>1068&&
+                            <div className={styles.cart_description}>
+                                <div>
                             <span>
                                 Сумма товаров:
                             </span>
-                                <span>
+                                    <span>
                                 0 руб.
                             </span>
-                            </div>
-                            <div>
+                                </div>
+                                <div>
                             <span>
                                Количество товаров:
                             </span>
-                                <span>
+                                    <span>
                                 0 шт.
                             </span>
+                                </div>
                             </div>
-                        </div>
-                        }
-                    </div>
+                            }
+                        </div>:
+                        <img src={cart} style={{width:'26px',height:'26px'}}/>
+                    }
 
 
                 </div>

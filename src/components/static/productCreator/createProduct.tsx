@@ -99,11 +99,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
         dispatch(productActions.addProduct.request({product: productData, images: images.map(image => image.name)}))
 
     };
-    //
-    // const updateProduct=useCallback((e: React.MouseEvent<HTMLButtonElement>)=>{
-    //     e.preventDefault();
-    //     dispatch(productActions.redactProduct.request({product:productData,images:redactAddImages}))
-    // },[productData,redactAddImages])
+
+
 
 
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)

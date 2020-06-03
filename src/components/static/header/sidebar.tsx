@@ -15,7 +15,8 @@ import {history} from "../../../index";
 
 
 export interface Props{
-onClose:(val:boolean)=>void
+onClose:(val:boolean)=>void,
+    isLk?:boolean
 }
 
 export const Sidebar:FunctionComponent<Props>=(props)=>{
@@ -28,6 +29,11 @@ export const Sidebar:FunctionComponent<Props>=(props)=>{
         dispatch(authActions.login.success(initSuccess));
         history.push(`/${cust_id}`)
 
+    };
+
+    const goToCatalog=()=>{
+        props.onClose(false);
+        history.push(`/${cust_id}`)
     };
     const goToAddProduct=()=>{
         dispatch(authActions.loginRedirectPath.request(`/${cust_id}/addProduct`));
@@ -44,6 +50,15 @@ export const Sidebar:FunctionComponent<Props>=(props)=>{
                 <FontAwesomeIcon icon={faTimes} color={'white'} />
             </div>
             <div className={styles.content}>
+                {props.isLk?
+                    <div className={styles.first_row}>
+                        <div onClick={()=>{props.onClose(false);goToAddProduct()}} className={styles.lc}>
+                            <span>
+                            Подать объявление
+                        </span>
+                        </div>
+                        <div className={styles.add} onClick={()=>{props.onClose(false);goToCatalog()}}> Вернуться к каталогу</div>
+                    </div>:
                 <div className={styles.first_row}>
                     <div onClick={()=>{props.onClose(false);goToLk()}} className={styles.lc}>
                         <FontAwesomeIcon icon={faUser}/>
@@ -51,8 +66,10 @@ export const Sidebar:FunctionComponent<Props>=(props)=>{
                             Личный кабинет
                         </span>
                     </div>
-                   <div className={styles.add} onClick={()=>{props.onClose(false);goToAddProduct()}}> Подать объявление</div>
+                    <div className={styles.add} onClick={()=>{props.onClose(false);goToAddProduct()}}> Подать объявление</div>
                 </div>
+
+                }
                 {userData.accessToken&&
                 <div className={styles.last_row}>
                     <span className={styles.welcome}>Здравствуйте, {userData.fio}</span>

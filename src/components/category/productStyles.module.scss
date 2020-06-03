@@ -12,6 +12,7 @@ $classes: image aside info left right additional;
   }
 
   .detail_product {
+
     @each $class in $classes {
       .#{$class} {
         grid-area: $class;
@@ -58,12 +59,13 @@ $classes: image aside info left right additional;
     }
 
     .close_icon {
+      background: #7f7f7f;
       position: absolute;
       color: #ffffff;
       right: 1%;
       top: 2%;
       z-index: 2;
-      padding: 5px;
+      padding: 2px;
       cursor: pointer;
     }
 
@@ -202,9 +204,9 @@ $classes: image aside info left right additional;
 
       img {
         margin: 0 5px;
-        max-width: 90px;
-        height: auto;
-        max-height: 60px;
+        width: 90px;
+        height: 50px;
+
       }
     }
 

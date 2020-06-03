@@ -71,6 +71,7 @@ export const redactProduct: RootEpic = (action$, state$) => action$.pipe(
                     "Content-Type": "application/json",
                     "Authorization":`Bearer ${token}`
                 }))).subscribe();
+                localStorage.removeItem('redact_item')
                 return concat(
                     of(productActions.redactProduct.success({status: res.status})),
                     of(productActions.addProduct.success({status: 0})).pipe(
