@@ -1,113 +1,78 @@
 import * as React from 'react'
-import {FunctionComponent, useCallback, useEffect, useMemo, useRef, useState} from "react";
-import styles from './createProductStyles.module.scss'
+import {FunctionComponent, useCallback, useMemo} from "react";
+import styles from "./createProductStyles.module.scss";
+import {Link} from "react-router-dom";
+import {CategoryDropdownMobile} from "../../category/categoryDropdownMobile";
+import {pipe} from "fp-ts/es6/pipeable";
+import {init} from "fp-ts/es6/Array";
+import {chain, fromNullable, getOrElse, map} from "fp-ts/es6/Option";
+import {AddProduct, Category} from "../../../interfaces";
+import {CategoryDropdown} from "../../category/categoryDropdown";
+import {AuthInput} from "../../utilsComponents/authInput";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+import {faUpload} from "@fortawesome/free-solid-svg-icons/faUpload";
+import {ClipLoader} from "react-spinners";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/root";
-import {AuthInput} from "../../utilsComponents/authInput";
-import {AddProduct, Category} from "../../../interfaces";
-import {prepareEntity} from "../../../utilsF/utils";
-import {productActions} from "../../../redux/product/actions";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUpload} from "@fortawesome/free-solid-svg-icons/faUpload";
-
-import {CategoryDropdown} from "../../category/categoryDropdown";
-import axios from 'axios'
-
-import {Link} from "react-router-dom";
-import {useSetState, useWindowSize} from "react-use";
-import {CategoryDropdownMobile} from "../../category/categoryDropdownMobile";
 import {useParams} from "react-router";
-import {history} from "../../../index";
+import {useState} from "react";
+import {useWindowSize} from "react-use";
+import {prepareEntity} from "../../../utilsF/utils";
+import {useRef} from "react";
+import {useEffect} from "react";
+import {append, data, getUrl} from "./createProduct";
+import {productActions} from "../../../redux/product/actions";
+import axios from "axios";
 import {prepareToFormData} from "../../../redux/product/epics";
-import {pipe} from "fp-ts/es6/pipeable";
-import {chain, fromNullable, getOrElse, map} from "fp-ts/es6/Option";
-import {init} from "fp-ts/es6/Array";
-import {ClipLoader} from "react-spinners";
-import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
-
-
-export const append = <T extends any>(item: T) => (array: T[]) => [...array, item];
-
-export const getUrl = (file: File) => {
-    const reader = new FileReader();
-    return new Promise<string>((resolve, reject) => {
-        reader.onload = (event) => {
-            event.target && resolve(event.target.result as string);
-        };
-        reader.readAsDataURL(file)
-    })
-};
 
 export interface Props {
 
 }
 
-export const data: AddProduct = {
-    Appcode: "",
-    CID: "",
-    Catalog: "",
-    Ctlg_Name: "",
-    Id: "",
-    PrcNt: "",
-    TArticle: "",
-    TCost: "",
-    TDescription: "",
-    TImageprev: "",
-    TName: "",
-    TransformMech: "",
-    TypeProd: "",
-    video: ""
 
-};
+const redactItem=JSON.parse(localStorage.getItem('redact_item') as string)
+export const EditProduct: FunctionComponent<Props> = () => {
 
-
-
-export const CreateProduct: FunctionComponent<Props> = () => {
+    const dispatch = useDispatch();
     const userData = useSelector((state: RootStateType) => state.auth.auth);
     const {cust_id} = useParams<{ cust_id: string }>()
-    const {width} = useWindowSize();
-    const dispatch = useDispatch();
     const [path, setPath] = useState<Category[]>([]);
-    const mergeData = (changes: Partial<AddProduct>) => setProductData(prepareEntity(changes));
+    const {width} = useWindowSize();
+    const [redactData, setRedactData] = useState<AddProduct>(data);
+    const mergeData = (changes: Partial<AddProduct>) => setRedactData(prepareEntity(changes));
     const [validate, setValidate] = useState(false);
-    const [images, setImages] = useState<{preview: string, name: string}[]>([]);
-    console.log(images)
+    const [images, setImages] = useState<{ preview: string, name: string }[]>([]);
     const additional_image = useRef<HTMLImageElement>(null);
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
+
+
+    const prepareStorage=useMemo(()=>{
+        return redactItem.images.map((item: string )=>{return {preview:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`,
+            name:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`}})
+    },[redactItem]);
     const [mainImage,setMainImage]=useState('');
-    const [productData, setProductData] = useState<AddProduct>(data);
+    useEffect(()=>{
+        redactItem.product.Id&&setRedactData(redactItem.product)
+        redactItem.images.length&&setImages(prepareStorage)
+        redactItem.product.TImageprev&&setMainImage(`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${redactItem.product.TImageprev}`)
+    },[redactItem]);
 
-        console.log(images)
 
-        useEffect(()=>{
-            requestState===200&&setProductData(data);
-            if(requestState===200){
-                setMainImage('')
-                setImages([])
-            }
-        },[requestState,productData])
+    console.log(mainImage)
+    const updateProduct = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        const filterImages=images.filter(image=>image.name!==image.preview);
+      localStorage.setItem('increment',JSON.stringify(images.length-filterImages.length));
+        dispatch(productActions.redactProduct.request({product: redactData, images: filterImages.map(image => image.name)}))
+    }, [redactData]);
 
+
+    console.log(redactData)
     const main_image_form_data = new FormData();
     main_image_form_data.append('AppCode', cust_id);
     const add_image_form_data = new FormData();
     add_image_form_data.append('appcode', cust_id);
-
-
-    const createProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        dispatch(productActions.addProductPreloader.request(false))
-        dispatch(productActions.addProduct.request({product: productData, images: images.map(image => image.name)}))
-
-    };
-    //
-    // const updateProduct=useCallback((e: React.MouseEvent<HTMLButtonElement>)=>{
-    //     e.preventDefault();
-    //     dispatch(productActions.redactProduct.request({product:productData,images:redactAddImages}))
-    // },[productData,redactAddImages])
-
-
-    const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
-
     const uploadImage = useCallback((img: File) => axios.post(
         'http://golowinskiy-api.bostil.ru/api/img/upload/',
         prepareToFormData({
@@ -121,6 +86,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
             },
         }), [add_image_form_data]
     );
+
 
     return (
         <div className={styles.container}>
@@ -139,7 +105,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
             </div>
             <div className={styles.md_center}>
                 <div>
-                    <Link to={`/${cust_id}/personalClient`} style={{textDecoration:'none'}}>
+                    <Link to={`/${cust_id}/personalClient`} style={{textDecoration: 'none'}}>
                         Вернуться в личный кабинет
                     </Link>
                 </div>
@@ -167,38 +133,6 @@ export const CreateProduct: FunctionComponent<Props> = () => {
             </div>
 
 
-            <div className={styles.select_category}>
-                {width < 1068 ?
-                    <CategoryDropdownMobile onClick={params => {
-                        setPath(params.isOpen? pipe(params.path, init, getOrElse<Category[]>(() => [])): params.path)
-                        if (params.isLast) {
-                            mergeData({
-                                Ctlg_Name: params.path[params.path.length - 1].txt,
-                                Id: params.path[params.path.length - 1].id
-                            })
-                        }
-                    }
-                    }
-                                            path={path}
-                                            isAdvert={true}
-                    />
-                    :
-                    <CategoryDropdown onClick={params => {
-                        setPath(params.isOpen? pipe(params.path, init, getOrElse<Category[]>(() => [])): params.path)
-                        if (params.isLast) {
-                            mergeData({
-                                Ctlg_Name: params.path[params.path.length - 1].txt,
-                                Id: params.path[params.path.length - 1].id
-                            })
-                        }
-
-                    }} minHeight={'530px'} isAdvert={true}
-                                      path={path}
-                    />
-                }
-            </div>
-
-
             <div className={styles.form_wrapper_div}>
                 <form>
                     <div className={styles.item}>
@@ -212,7 +146,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                 mergeData({TName: value, CID: userData.userId, Appcode: cust_id, Catalog: cust_id});
                                 !value.length ? setValidate(true) : setValidate(false);
                             }}
-                             value={productData.TName}
+                                value={redactData.TName}
                             />
                             {validate &&
                             <p className={styles.validate}>Заполните наименование товара,услуги</p>
@@ -233,17 +167,24 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                                         fromNullable(event.target.files),
                                         chain(list => fromNullable(list[0])),
                                         map(file => {
-                                            getUrl(file).then(name =>setMainImage(name));
-                                            uploadImage(file).then(() => mergeData({TImageprev:file.name}));
+                                            getUrl(file).then(name => setMainImage(name));
+                                            uploadImage(file).then(() => mergeData({TImageprev: file.name}));
                                         })
                                     );
                                 }}
                                 />
-                                {(mainImage)&&
-                                <FontAwesomeIcon icon={faTimes} color={'white'} onClick={()=>productData.TImageprev?mergeData({TImageprev:''}):setMainImage('')}
-                                                 style={{width: '10px', height: '10x', color: 'black',position:"absolute",marginLeft:'100px'}}/>
+                                {(mainImage) &&
+                                <FontAwesomeIcon icon={faTimes} color={'white'}
+                                                 onClick={() => redactData.TImageprev ? mergeData({TImageprev: ''}) : setMainImage('')}
+                                                 style={{
+                                                     width: '10px',
+                                                     height: '10x',
+                                                     color: 'black',
+                                                     position: "absolute",
+                                                     marginLeft: '100px'
+                                                 }}/>
                                 }
-                                <img src={mainImage} />
+                                <img src={mainImage}/>
                                 <FontAwesomeIcon icon={faUpload}/>
                             </div>
                         </div>
@@ -251,22 +192,22 @@ export const CreateProduct: FunctionComponent<Props> = () => {
 
                     <div className={styles.item_loading}>
 
-                        {requestState!==0&&
-                        <div className={styles.loading_text}>
-                            {!preloader&&
-                            <ClipLoader size={18}
-                                        color={"black"}/>
-                            }
-                            {
-                                (requestState&&requestState!==200)?
-                                    <div>
-                                        Ошибка
-                                    </div>:
-                                    <div>Товар успешно добавлен</div>
+                        {/*{requestState !== 0 &&*/}
+                        {/*<div className={styles.loading_text}>*/}
+                        {/*    {!preloader &&*/}
+                        {/*    <ClipLoader size={18}*/}
+                        {/*                color={"black"}/>*/}
+                        {/*    }*/}
+                        {/*    {*/}
+                        {/*        (requestState && requestState !== 200) ?*/}
+                        {/*            <div>*/}
+                        {/*                Ошибка*/}
+                        {/*            </div> :*/}
+                        {/*            <div>Товар успешно добавлен</div>*/}
 
-                            }
-                        </div>
-                        }
+                        {/*    }*/}
+                        {/*</div>*/}
+                        {/*}*/}
                     </div>
 
                     <div className={styles.item}>
@@ -276,21 +217,20 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
 
-
-                        <div className={styles.form_wrapper} style={{flexDirection:'row',display:'flex'}}>
-                            <div className={styles.add_grid} style={{display:'grid'}}>
+                        <div className={styles.form_wrapper} style={{flexDirection: 'row', display: 'flex'}}>
+                            <div className={styles.add_grid} style={{display: 'grid'}}>
                                 {
-                                        images.map(image =>
-                                            <div style={{display:'flex'}}>
-                                                <div className={styles.image} >
-                                                    <img src={image.preview}  ref={additional_image} key={image.name}/>
-                                                    <FontAwesomeIcon icon={faUpload}/>
-                                                </div>
-                                                <FontAwesomeIcon icon={faTimes}
-                                                                 color={'black'}
-                                                                 style={{paddingLeft:'7px',cursor:'pointer'}}
-                                                                 onClick={()=>setImages(prevState => ([...prevState.filter(i=>i.preview===image.preview?i.preview='':i.preview)]))}/>
-                                            </div>)
+                                    images.map(image =>
+                                        <div style={{display: 'flex'}}>
+                                            <div className={styles.image}>
+                                                <img src={image.preview} ref={additional_image} key={image.name}/>
+                                                <FontAwesomeIcon icon={faUpload}/>
+                                            </div>
+                                            <FontAwesomeIcon icon={faTimes}
+                                                             color={'black'}
+                                                             style={{paddingLeft: '7px', cursor: 'pointer'}}
+                                                             onClick={() => setImages(prevState => ([...prevState.filter(i => i.preview === image.preview ? i.preview = '' : i.preview)]))}/>
+                                        </div>)
 
                                 }
 
@@ -323,7 +263,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                                <textarea onChange={event => mergeData({TDescription: event.target.value})} value={productData.TDescription}>
+                                <textarea onChange={event => mergeData({TDescription: event.target.value})}
+                                          value={redactData.TDescription}>
 
                             </textarea>
                         </div>
@@ -335,13 +276,13 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TCost: value})} value={productData.TCost}/>
+                            <AuthInput onChange={value => mergeData({TCost: value})} value={redactData.TCost}/>
                         </div>
                     </div>
                     <div className={styles.submitBlock}>
-                        <button className={productData.TName.length < 3?styles.button:styles.button_active}
-                                onClick={(e) => createProduct(e)}
-                                disabled={productData.TName.length < 3}>Разместить объявление
+                        <button className={redactData.TName.length < 3 ? styles.button : styles.button_active}
+                                onClick={(e) => updateProduct(e)}
+                                disabled={redactData.TName.length < 3}>Разместить объявление
                         </button>
                     </div>
                     <div className={styles.row_other}>
@@ -358,7 +299,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({video: value})} value={productData.video??''}/>
+                            <AuthInput onChange={value => mergeData({video: value})} value={redactData.video ?? ''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -368,7 +309,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TypeProd: value})} value={productData.TypeProd??''}/>
+                            <AuthInput onChange={value => mergeData({TypeProd: value})}
+                                       value={redactData.TypeProd ?? ''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -378,7 +320,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({PrcNt: value})} value={productData.PrcNt??''}/>
+                            <AuthInput onChange={value => mergeData({PrcNt: value})} value={redactData.PrcNt ?? ''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -388,7 +330,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TArticle: value})} value={productData.TArticle??''}/>
+                            <AuthInput onChange={value => mergeData({TArticle: value})}
+                                       value={redactData.TArticle ?? ''}/>
                         </div>
                     </div>
                     <div className={styles.item}>
@@ -398,7 +341,8 @@ export const CreateProduct: FunctionComponent<Props> = () => {
                             </label>
                         </div>
                         <div className={styles.form_wrapper}>
-                            <AuthInput onChange={value => mergeData({TransformMech: value})} value={productData.TransformMech??''}/>
+                            <AuthInput onChange={value => mergeData({TransformMech: value})}
+                                       value={redactData.TransformMech ?? ''}/>
                         </div>
                     </div>
                 </form>

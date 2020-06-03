@@ -5,6 +5,7 @@ import {useParams} from "react-router";
 import {galleryActions} from "../../redux/gallery/actions";
 import {batch, useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../redux/root";
+import {shopInfoAction} from "../../redux/shopInfo/actions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
 import {history} from "../../index";
@@ -21,8 +22,12 @@ import './product.css'
 import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
 import {findIndex, lookup} from "fp-ts/es6/Array";
 import {chain, isSome} from "fp-ts/es6/Option";
+import {productActions} from "../../redux/product/actions";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import {api_v1} from "../../api";
+import {boolean} from "fp-ts";
+
 
 export interface ProductProps {
 }
@@ -105,6 +110,47 @@ export const Product: FunctionComponent<Props> = (props) => {
         })
     }, [cust_id, userId, productData.prc_ID]);
 
+    const setRedactProduct = () => {
+        localStorage.setItem('redact_item',JSON.stringify({
+            product: {
+                TName: productData.tName,
+                TDescription: productData.tDescription,
+                TCost: productData.prc_Br,
+                video: productData.youtube,
+                Ctlg_Name: productData.ctlg_Name,
+                TArticle: productData.ctlg_No,
+                Id: productData.id,
+                Appcode: cust_id,
+                Prc_ID: String(productData.prc_ID),
+                Catalog: cust_id,
+                CID: userId.userId,
+                TImageprev: productData.t_imageprev,
+
+            },
+            images:[...productData.additionalImages?.map(img=>img.t_image)||['']]
+
+        }||{}))
+        // dispatch(productActions.redactProduct.request({
+        //     product: {
+        //         TName: productData.tName,
+        //         TDescription: productData.tDescription,
+        //         TCost: productData.prc_Br,
+        //         video: productData.youtube,
+        //         Ctlg_Name: productData.ctlg_Name,
+        //         TArticle: productData.ctlg_No,
+        //         Id: productData.id,
+        //         Appcode: cust_id,
+        //         Catalog: cust_id,
+        //         CID: userId.userId,
+        //         TImageprev: productData.t_imageprev,
+        //
+        //     },
+        //     images:[...productData.additionalImages?.map(img=>img.t_image)||['']]
+        //
+        // }));
+        history.push(`/${cust_id}/edit`)
+    };
+
     const [orderStatus, setOrderStatus] = useState(false);
     const toOrder = useCallback(() => {
         axios.get(`http://golowinskiy-api.bostil.ru/api/Load/${cust_id}`).then(res => {
@@ -145,7 +191,7 @@ export const Product: FunctionComponent<Props> = (props) => {
             next: chain((index: number) => lookup(index + 1, links))(index),
         }
     }, [productList, product_id]);
-    
+
     return (
         <div className={styles.detail_wrapper}>
             <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
@@ -205,18 +251,20 @@ export const Product: FunctionComponent<Props> = (props) => {
                     </div>
                     {props.isLc ?
                         <div className={styles.button_grp}>
-                            <div style={{background: '#37c509'}}>
-                                <span>Редактировать</span>
+                            <div style={{background: '#37c509'}} onClick={()=>setRedactProduct()}>
+                                <span>
+                                    Редактировать
+                                </span>
                             </div>
                             <div style={{background: '#f1173a'}} onClick={removeProduct}>
-                                <span>Удалить</span>
+                                <span>
+                                    Удалить
+                                </span>
                             </div>
                         </div> :
-                        <div className={styles.button_wrapper}>
-                            <div
-                                className={styles.to_cart}
-                                onClick={() => toOrder()}
-                                style={{background: orderStatus ? '#37c509' : '#f1173a'}}
+                        <div className={styles.button_wrapper}
+                             style={{background: orderStatus ? '#37c509' : '#f1173a'}}>
+                            <div className={styles.to_cart} onClick={() => toOrder()}
                             >
                                 {orderStatus ? <FontAwesomeIcon icon={faCheck} color={'white'}/> : <img src={cart}/>}
                                 <span>{orderStatus ? 'В корзине' : 'В корзину'}</span>
