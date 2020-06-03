@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FunctionComponent, useMemo, useState} from "react";
+import {FunctionComponent} from 'react'
 import {Category} from "../../interfaces";
 import {pipe} from "fp-ts/es6/pipeable";
 import {tail} from "fp-ts/es6/Array";
@@ -24,17 +24,20 @@ export const MobileItem: FunctionComponent<Props> = (props) => {
     const isEmpty = props.path.length === 0;
     return (<div className={'item_mobile'}>
             {
-                (isOpen || isEmpty) && <a className={`field  ${isOpen ? 'open' : ''}`}
-                                          onClick={() => props.onClick({
-                                              path: [props.data],
-                                              isOpen,
-                                              isLast,
-                                          })}>{props.data.txt}</a>
+                (isOpen || isEmpty) &&
+                <a
+                    className={`field  ${isOpen ? 'open' : ''}`}
+                    onClick={() => props.onClick({
+                        path: [props.data],
+                        isOpen,
+                        isLast,
+                    })}
+                >{props.data.txt}</a>
             }
             <ul className={'second_ul_mobile'}>
                 {
                     isOpen && props.data.listInnerCat.map(data => <MobileItem
-
+                        key={data.id}
                         data={data}
                         path={pipe(tail(props.path), getOrElse<Category[]>(() => []))}
                         onClick={params => props.onClick({

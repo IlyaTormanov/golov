@@ -7,6 +7,8 @@ $classes: image aside info left right additional;
   @media screen and (max-width: 600px) {
     background: #fff;
     padding: 1% 0;
+    position: absolute;
+    top: 0;
   }
 
   .detail_product {

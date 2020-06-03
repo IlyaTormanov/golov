@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/mobileItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/mobileItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/productStyles.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -265,11 +284,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="594" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589194634186" />
-    <state x="740" y="307" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591081881548">
+    <state x="740" y="307" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591187078126">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
-    <state x="740" y="307" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591081881548" />
+    <state x="740" y="307" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591187078126" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
     <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
     <state x="801" y="146" key="RollbackChangesDialog" timestamp="1591025762081">
@@ -297,11 +316,12 @@
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590676105568" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590471545021" />
-    <state x="656" y="252" width="751" height="603" key="find.popup" timestamp="1591021827734">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="656" y="284" width="751" height="609" key="find.popup" timestamp="1591187918332">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="656" y="252" width="751" height="603" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1591021827734" />
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590408693343" />
+    <state x="656" y="284" width="751" height="609" key="find.popup/0.30.1920.1050/1920.30.1920.1050@0.30.1920.1050" timestamp="1591187918332" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590492716529" />
     <state x="700" y="282" width="724" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590740111432" />
     <state x="691" y="293" key="git4idea.merge.GitPullDialog" timestamp="1591024948367">
