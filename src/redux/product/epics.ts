@@ -19,7 +19,7 @@ export const addProduct: RootEpic = (action$, state$) => action$.pipe(
         "Content-Type": "application/json"
     }).pipe(
         mergeMap(res => {
-            const isRedact=state$.value.product.redactProduct.product.Id;
+
             if (res.status === 200) {
                 forkJoin(images.map((tImage, imageOrder) => ajax.post(api_v1.additionalImage, {
                     catalog: product.Catalog,
@@ -46,6 +46,8 @@ export const addProduct: RootEpic = (action$, state$) => action$.pipe(
     )),
     catchError(() => from([productActions.addProduct.failure({status: 500}), productActions.addProductPreloader.success(false)]))
 );
+
+const increment=+JSON.parse(localStorage.getItem('increment') as string);
 export const redactProduct: RootEpic = (action$, state$) => action$.pipe(
     filter(isActionOf(productActions.redactProduct.request)),
     mergeMap(({payload: {product, images}}) => ajax.put(api_v1.addProduct, product, {
@@ -54,11 +56,11 @@ export const redactProduct: RootEpic = (action$, state$) => action$.pipe(
         mergeMap(res => {
             const isRedact=state$.value.product.redactProduct.product.Id;
             if (res.status === 200) {
-                forkJoin(images.map((tImage, imageOrder) => ajax.post(api_v1.additionalImage, {
+                forkJoin(images.map((tImage, imageOrder) => ajax.put(api_v1.additionalImage, {
                     catalog: product.Catalog,
                     id: product.Id,
-                    prc_ID: res.response.prc_id,
-                    imageOrder,
+                    prc_ID: product.Prc_ID,
+                    imageOrder:imageOrder+increment,
                     tImage,
                     appcode: product.Appcode,
                     cid: state$.value.auth.auth.userId,
@@ -70,7 +72,7 @@ export const redactProduct: RootEpic = (action$, state$) => action$.pipe(
                     of(productActions.addProduct.success({status: 0})).pipe(
                         delay(3000)
                     ),
-                    // isRedact?of(goBack()):EMPTY
+                    isRedact?of(goBack()):EMPTY
 
                 )
             }

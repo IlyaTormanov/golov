@@ -126,6 +126,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                 TArticle: productData.ctlg_No,
                 Id: productData.id,
                 Appcode: cust_id,
+                Prc_ID:productData.prc_ID,
                 Catalog: cust_id,
                 CID: userId.userId,
                 TImageprev: productData.t_imageprev,
@@ -152,7 +153,7 @@ export const Product: FunctionComponent<Props> = (props) => {
         //     images:[...productData.additionalImages?.map(img=>img.t_image)||['']]
         //
         // }));
-        history.push(`/${cust_id}/addProduct`)
+        history.push(`/${cust_id}/edit`)
     };
 
     const [orderStatus, setOrderStatus] = useState(false);

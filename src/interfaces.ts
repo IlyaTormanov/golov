@@ -22,7 +22,8 @@ export interface AddProduct {
     TName: string
     TransformMech?: string
     TypeProd?: string
-    video?: string
+    video?: string,
+    Prc_ID?:number
 }
 
 export interface Product {

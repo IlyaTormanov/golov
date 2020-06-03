@@ -9,6 +9,7 @@ import {useEffect} from "react";
 import {shopInfoAction} from "./redux/shopInfo/actions";
 import {useDispatch} from "react-redux";
 import {PrivateOffice} from "./components/static/privateOffice/privateOffice";
+import {EditProduct} from "./components/static/productCreator/editProduct";
 
 
 
@@ -27,6 +28,7 @@ export const Main:FunctionComponent=()=>{
             <Switch>
                 <Route exact path={'/'} component={Root}/>
                 <Route path={'/:cust_id/addProduct'}  component={CreateProduct}/>
+                <Route path={'/:cust_id/edit'} component={EditProduct}/>
                 <Route path={'/:cust_id/personalClient'} component={PrivateOffice}/>
                 <Route path={'/:cust_id'} component={App}/>
 

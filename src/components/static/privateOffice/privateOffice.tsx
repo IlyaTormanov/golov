@@ -22,6 +22,7 @@ import axios from 'axios'
 import {api_v1} from "../../../api";
 import {Gallery} from "../../gallery/gallery";
 import {Product} from "../../category/Product";
+import { EditProduct } from '../productCreator/editProduct';
 export interface Props{
 
 }
@@ -67,8 +68,11 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
                         }
                     }} path={path} />}/>
                     <Route path={'/:cust_id/personalClient/:gallery_id/:product_id'} render= {()=><Product isLc={true}/> }/>
-                    <Route path={'/:cust_id/personalClient/:gallery_id/'} render={()=><Gallery isLk={true} path={path} cid={user_id} onClick={(index) => setPath(takeLeft(index))}
-                                                                                               secondClick={setPath}/>}/>
+                    <Route path={'/:cust_id/personalClient/:gallery_id/'} render={()=><Gallery isLk={true}
+                                                                                               path={path}
+                                                                                               cid={user_id}
+                                                                                               onClick={(index) => setPath(takeLeft(index))} secondClick={setPath}/>}/>
+
                 </Switch>
             </div>
 
