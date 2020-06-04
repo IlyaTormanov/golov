@@ -210,8 +210,8 @@ $classes: image aside info left right additional;
 
       img {
         margin: 0 5px;
-        width: 90px;
-        height: 50px;
+        max-width: 90px;
+        height: auto;
 
       }
     }

@@ -178,14 +178,13 @@ export const Product: FunctionComponent<Props> = (props) => {
     }, [productList, product_id]);
 
     const [swiper, setSwiper] = useState<SwiperInstance>(null);
+
     const params={
         slidesPerView:3,
-
+        watchOverflow:true
     };
     const nextSlide=()=>{
-
             swiper?.slideNext();
-
     };
 
     const prevSlide = () => {
@@ -193,7 +192,10 @@ export const Product: FunctionComponent<Props> = (props) => {
             swiper?.slidePrev();
         }
     };
+
+
     return (
+
         <div className={styles.detail_wrapper}>
             <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
                 <div className={styles.close_icon}
@@ -230,8 +232,9 @@ export const Product: FunctionComponent<Props> = (props) => {
                             src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${currentImg ? currentImg : productData.t_imageprev}`}/>
                     }
                 </div>
+
                 {(isMobile && productData.additionalImages) &&
-                <div className={styles.additional}>
+                <div className={styles.additional} style={{width:'310px',margin:'0 auto'}}>
                     {
                         productData.additionalImages.length>3?
                             <>
@@ -242,7 +245,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                                 />
 
 
-                                <Swiper {...params} getSwiper={setSwiper}>
+                                <Swiper {...params} getSwiper={setSwiper}  >
                                     {productData.additionalImages?.map(img =>
                                         <img
                                             src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
