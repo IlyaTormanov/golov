@@ -82,7 +82,7 @@ $classes: image aside info left right additional;
     @media screen and (max-width: 600px) {
       .left, .right {
         position: absolute;
-        top: 25%;
+        top: 200px;
       }
       .left {
         left: 0;
@@ -200,11 +200,13 @@ $classes: image aside info left right additional;
     }
 
     .additional {
+      padding-bottom: 10px;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #ffffff;
-      overflow: hidden;
+
 
       img {
         margin: 0 5px;
