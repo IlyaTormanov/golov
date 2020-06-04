@@ -24,8 +24,10 @@ import {chain, isSome} from "fp-ts/es6/Option";
 import {productActions} from "../../redux/product/actions";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Swiper, {SwiperInstance} from 'react-id-swiper';
 import 'swiper/swiper.scss'
-import Swiper from 'react-id-swiper';
 export interface ProductProps {
 }
 
@@ -130,24 +132,7 @@ export const Product: FunctionComponent<Props> = (props) => {
             images:[...productData.additionalImages?.map(img=>img.t_image)||['']]
 
         }||{}))
-        // dispatch(productActions.redactProduct.request({
-        //     product: {
-        //         TName: productData.tName,
-        //         TDescription: productData.tDescription,
-        //         TCost: productData.prc_Br,
-        //         video: productData.youtube,
-        //         Ctlg_Name: productData.ctlg_Name,
-        //         TArticle: productData.ctlg_No,
-        //         Id: productData.id,
-        //         Appcode: cust_id,
-        //         Catalog: cust_id,
-        //         CID: userId.userId,
-        //         TImageprev: productData.t_imageprev,
-        //
-        //     },
-        //     images:[...productData.additionalImages?.map(img=>img.t_image)||['']]
-        //
-        // }));
+
         history.push(`/${cust_id}/edit`)
     };
 
@@ -192,6 +177,22 @@ export const Product: FunctionComponent<Props> = (props) => {
         }
     }, [productList, product_id]);
 
+    const [swiper, setSwiper] = useState<SwiperInstance>(null);
+    const params={
+        slidesPerView:3,
+
+    };
+    const nextSlide=()=>{
+
+            swiper?.slideNext();
+
+    };
+
+    const prevSlide = () => {
+        if (swiper) {
+            swiper?.slidePrev();
+        }
+    };
     return (
         <div className={styles.detail_wrapper}>
             <div className={`${styles.detail_product} ${productData.additionalImages?.length ? '' : styles.empty}`}>
@@ -231,15 +232,46 @@ export const Product: FunctionComponent<Props> = (props) => {
                 </div>
                 {(isMobile && productData.additionalImages) &&
                 <div className={styles.additional}>
-                      {/*<Swiper  >*/}
-                          {productData.additionalImages?.map(img =>
-                              <img
-                                  src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
-                                  onMouseEnter={() => setCurrentImg(img.t_image)}
-                                  onMouseLeave={() => setCurrentImg('')}
-                              />
-                          )}
-                      {/*</Swiper>*/}
+                    {
+                        productData.additionalImages.length>3?
+                            <>
+                                <FontAwesomeIcon
+                                    onClick={prevSlide}
+                                    icon={faChevronLeft}
+                                    style={{width: '22px', height: '22px'}}
+                                />
+
+
+                                <Swiper {...params} getSwiper={setSwiper}>
+                                    {productData.additionalImages?.map(img =>
+                                        <img
+                                            src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                            onMouseEnter={() => setCurrentImg(img.t_image)}
+                                            onMouseLeave={() => setCurrentImg('')}
+                                        />
+                                    )}
+                                </Swiper>
+                                <FontAwesomeIcon
+                                    onClick={nextSlide}
+                                    icon={faChevronRight}
+                                    style={{width: '22px', height: '22px'}}
+                                />
+                            </>:
+                            <>
+                                {productData.additionalImages?.map(img =>
+                                    <img
+                                        src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                        onMouseEnter={() => setCurrentImg(img.t_image)}
+                                        onMouseLeave={() => setCurrentImg('')}
+                                    />
+                                )}
+                            </>
+
+
+                    }
+
+
+
                 </div>
 
                 }
