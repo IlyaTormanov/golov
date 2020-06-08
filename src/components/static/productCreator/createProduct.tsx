@@ -78,9 +78,6 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const requestState = useSelector((state: RootStateType) => state.product.productSuccess.status);
     const [mainImage,setMainImage]=useState('');
     const [productData, setProductData] = useState<AddProduct>(data);
-
-        console.log(images)
-
         useEffect(()=>{
             requestState===200&&setProductData(data);
             if(requestState===200){
@@ -101,8 +98,6 @@ export const CreateProduct: FunctionComponent<Props> = () => {
         dispatch(productActions.addProduct.request({product: productData, images: images.map(image => image.name)}))
 
     };
-
-
 
 
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)

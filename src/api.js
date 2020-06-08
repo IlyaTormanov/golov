@@ -1,7 +1,7 @@
-export const api=window?.__env?.api??'http://golowinskiy-api.bostil.ru/api/';
-export const apiUrl=window?.__env?.apiUrl??'http://golowinskiy-api.bostil.ru/';
-export const shopName=window?.__env?.shopName??'golowinskiy';
-export const imagePath=window?.__env?.apiUrl??'http://golowinskiy-api.bostil.ru/';
+export const api=window?.__env?.api??'https://bos.hramushina.ru/api/';
+export const apiUrl=window?.__env?.apiUrl??'https://bos.hramushina.ru/';
+export const shopName=window?.__env?.shopName??'24445';
+export const imagePath=window?.__env?.apiUrl??'https://bos.hramushina.ru/';
 
 export const api_v1={
     shopInfo:`${api}shopinfo/${shopName}`,
