@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="add api path">
+    <list default="true" id="d2ddfda2-1959-477a-ae2f-46e1c36e279e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gallery/gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/gallery/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/gallery/actions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$USER_HOME$/reactts-electron-nodejs-app" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -225,7 +228,9 @@
       <workItem from="1591604902710" duration="1578000" />
       <workItem from="1591606495856" duration="469000" />
       <workItem from="1591606982175" duration="1645000" />
-      <workItem from="1591608792217" duration="534000" />
+      <workItem from="1591608792217" duration="996000" />
+      <workItem from="1591611597770" duration="1613000" />
+      <workItem from="1591613532542" duration="1618000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1589381917686</created>
@@ -255,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591608871735</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add api path">
+      <created>1591609333918</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591609333918</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,11 +322,11 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="662" y="226" width="652" height="653" key="#npm_start/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590490017166" />
-    <state x="632" y="101" width="869" height="979" key="CommitChangelistDialog2" timestamp="1591609289526">
+    <state x="632" y="101" width="869" height="979" key="CommitChangelistDialog2" timestamp="1591609333850">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471728268" />
-    <state x="632" y="101" width="869" height="979" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1591609289526" />
+    <state x="632" y="101" width="869" height="979" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1591609333850" />
     <state x="170" y="27" width="1643" height="1053" maximized="true" key="DiffContextDialog" timestamp="1591607138803">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -324,12 +336,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="594" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589194634186" />
-    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590764902243">
+    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591609649773">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590554311030" />
     <state x="781" y="305" width="424" height="513" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1590561102048" />
-    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590764902243" />
+    <state x="781" y="305" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1591609649773" />
     <state x="748" y="180" width="480" height="744" key="RollbackChangesDialog" timestamp="1591277544930">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -342,11 +354,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1589354721023" />
-    <state x="600" y="283" width="800" height="536" key="Vcs.Push.Dialog.v2" timestamp="1591609291283">
+    <state x="600" y="283" width="800" height="536" key="Vcs.Push.Dialog.v2" timestamp="1591609336580">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590471702930" />
-    <state x="600" y="283" width="800" height="536" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1591609291283" />
+    <state x="600" y="283" width="800" height="536" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1591609336580" />
     <state x="124" y="225" width="1643" height="855" maximized="true" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1591607138803">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -39,7 +39,7 @@ export const Gallery: FunctionComponent<GalleryProps> = (props) => {
     const currentPage = useSelector((state: RootStateType) => state.gallery.paginate)
     useEffect(() => {
         dispatch(galleryActions.fetchGallery.request({
-            data: {CID: props.cid?props.cid:'', ID: gallery_id, Cust_ID: cust_id},
+            data: {CID: props.cid?props.cid:undefined, ID: gallery_id, Cust_ID: cust_id},
             paginateInfo: {PageNumber: currentPage, CountOnPage: 15}
         }))
         dispatch(galleryActions.galleryPreloader.success(true))
