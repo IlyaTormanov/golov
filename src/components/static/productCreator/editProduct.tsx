@@ -25,6 +25,8 @@ import {append, data, getUrl} from "./createProduct";
 import {productActions} from "../../../redux/product/actions";
 import axios from "axios";
 import {prepareToFormData} from "../../../redux/product/epics";
+import {api_v1} from "../../../api";
+
 
 export interface Props {
 
@@ -37,8 +39,6 @@ export const EditProduct: FunctionComponent<Props> = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state: RootStateType) => state.auth.auth);
     const {cust_id} = useParams<{ cust_id: string }>()
-    const [path, setPath] = useState<Category[]>([]);
-    const {width} = useWindowSize();
     const [redactData, setRedactData] = useState<AddProduct>(data);
     const mergeData = (changes: Partial<AddProduct>) => setRedactData(prepareEntity(changes));
     const [validate, setValidate] = useState(false);
@@ -48,19 +48,18 @@ export const EditProduct: FunctionComponent<Props> = () => {
 
     const redactItem=JSON.parse(localStorage.getItem('redact_item') as string)
     const prepareStorage=useMemo(()=>{
-        return redactItem.images.map((item: string )=>{return {preview:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`,
-            name:`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${item}`}})
+        return redactItem.images.map((item: string )=>{return {preview:`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${item}`,
+            name:`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${item}`}})
     },[]);
 
     const [mainImage,setMainImage]=useState('');
     useEffect(()=>{
         redactItem.product.Id&&setRedactData(redactItem.product)
         redactItem.images.length&&setImages(prepareStorage)
-        redactItem.product.TImageprev&&setMainImage(`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${redactItem.product.TImageprev}`)
+        redactItem.product.TImageprev&&setMainImage(`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${redactItem.product.TImageprev}`)
     },[]);
 
 
-    console.log(redactItem,'redactIetem')
     const updateProduct = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const filterImages=images.filter(image=>image.name!==image.preview);
@@ -76,7 +75,7 @@ export const EditProduct: FunctionComponent<Props> = () => {
     const add_image_form_data = new FormData();
     add_image_form_data.append('appcode', cust_id);
     const uploadImage = useCallback((img: File) => axios.post(
-        'http://golowinskiy-api.bostil.ru/api/img/upload/',
+        api_v1.uploadImage,
         prepareToFormData({
             'AppCode': cust_id,
             'Img': img,

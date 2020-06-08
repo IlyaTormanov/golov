@@ -1,11 +1,12 @@
 import {RootEpic} from "../root";
 import {isActionOf} from "typesafe-actions";
 import {catchError, filter, mergeMap} from "rxjs/operators";
-import {api_v1} from "../../api";
+
 import {ajax} from "rxjs/ajax";
 import {from, of} from "rxjs";
 import {shopInfoAction} from "./actions";
 import {push} from "connected-react-router";
+import {api_v1} from "../../api";
 
 
 export const shopInfoEpic: RootEpic = (action$) => action$.pipe(

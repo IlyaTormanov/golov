@@ -28,6 +28,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Swiper, {SwiperInstance} from 'react-id-swiper';
 import 'swiper/swiper.scss'
+import {api_v1} from "../../api";
+
 export interface ProductProps {
 }
 
@@ -100,7 +102,7 @@ export const Product: FunctionComponent<Props> = (props) => {
     }
     const productData = useSelector((state: RootStateType) => state.gallery.galleryProduct);
     const removeProduct = useCallback(() => {
-        axios.delete('http://golowinskiy-api.bostil.ru/api/product', {
+        axios.delete(api_v1.addProduct, {
             headers: {
                 Authorization: `Bearer ${userId.accessToken}`
             },
@@ -138,9 +140,9 @@ export const Product: FunctionComponent<Props> = (props) => {
 
     const [orderStatus, setOrderStatus] = useState(false);
     const toOrder = useCallback(() => {
-        axios.get(`http://golowinskiy-api.bostil.ru/api/Load/${cust_id}`).then(res => {
-            axios.post('http://golowinskiy-api.bostil.ru/api/order/', {Cust_ID: res.data}).then(response => {
-                axios.post('http://golowinskiy-api.bostil.ru/api/addtocart', {
+        axios.get(`${api_v1.load}/${cust_id}`).then(res => {
+            axios.post(api_v1.order, {Cust_ID: res.data}).then(response => {
+                axios.post(api_v1.addToCart, {
                     OrdTtl_Id: response.data.ord_ID,
                     OI_No: 1,
                     Ctlg_No: productData.ctlg_No,
@@ -229,7 +231,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                         />
                         :
                         <img
-                            src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${currentImg ? currentImg : productData.t_imageprev}`}/>
+                            src={`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${currentImg ? currentImg : productData.t_imageprev}`}/>
                     }
                 </div>
 
@@ -248,7 +250,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                                 <Swiper {...params} getSwiper={setSwiper}  >
                                     {productData.additionalImages?.map(img =>
                                         <img
-                                            src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                            src={`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
                                             onMouseEnter={() => setCurrentImg(img.t_image)}
                                             onMouseLeave={() => setCurrentImg('')}
                                         />
@@ -263,7 +265,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                             <>
                                 {productData.additionalImages?.map(img =>
                                     <img
-                                        src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                        src={`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
                                         onMouseEnter={() => setCurrentImg(img.t_image)}
                                         onMouseLeave={() => setCurrentImg('')}
                                     />
@@ -324,7 +326,7 @@ export const Product: FunctionComponent<Props> = (props) => {
                         isDesktop && <div className={styles.additional}>
                             {productData.additionalImages?.map(img =>
                                 <img
-                                    src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
+                                    src={`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${img.t_image}`}
                                     onMouseEnter={() => setCurrentImg(img.t_image)}
                                     onMouseLeave={() => setCurrentImg('')}
                                 />

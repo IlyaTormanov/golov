@@ -44,7 +44,6 @@ export const Gallery: FunctionComponent<GalleryProps> = (props) => {
         }))
         dispatch(galleryActions.galleryPreloader.success(true))
     }, [dispatch, gallery_id, cust_id]);
-    console.log(products.pageInfoOutput.totalPages)
     return (
         <div className={styles.product_list} style={{maxWidth: preloader ? '100%' : '1200px'}}>
             {preloader ?
@@ -54,7 +53,6 @@ export const Gallery: FunctionComponent<GalleryProps> = (props) => {
                                 color={"black"}/>
                 </div>
                 :
-
                 <div className={styles.breadcrumbs_list}
                      style={{width: width < 1068 ? '100%' : 'auto', paddingLeft: width < 1068 ? '0' : '9px'}}>
                     {width > 1068 ?

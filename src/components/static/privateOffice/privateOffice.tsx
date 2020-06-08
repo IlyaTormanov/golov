@@ -19,10 +19,11 @@ import styles from './privateOfficeStyles.module.scss'
 import {PersonalHeader} from "../header/personalHeader";
 import {ShopInfo} from "../../../redux/shopInfo/actions";
 import axios from 'axios'
-import {api_v1} from "../../../api";
+
 import {Gallery} from "../../gallery/gallery";
 import {Product} from "../../category/Product";
 import { EditProduct } from '../productCreator/editProduct';
+import {api_v1, imagePath} from "../../../api";
 export interface Props{
 
 }
@@ -45,7 +46,7 @@ export const PrivateOffice:FunctionComponent<Props>=()=>{
     return(
 
         <div className={styles.office}
-             style={{backgroundImage: ` url(http://golowinskiy-api.bostil.ru${avatar?.mainImage}) `}}>
+             style={{backgroundImage: ` url(${imagePath}${avatar?.mainImage}) `}}>
             {(sidebar&&width<1086)&&
             <Sidebar onClose={setSidebar} isLk={true}/>
             }

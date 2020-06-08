@@ -6,6 +6,8 @@ import {useSelector} from "react-redux";
 import {RootStateType} from "../../redux/root";
 import {history} from "../../index";
 import {useParams} from "react-router";
+import {api_v1} from "../../api";
+
 
 
 export interface Props{
@@ -17,7 +19,7 @@ export const ProductCard:FunctionComponent<Props>=(props)=>{
     return(
         <div className={styles.product_list_item} onClick={()=>history.push(props.isLc?`/${cust_id}/personalClient/${gallery_id}/${props.product.prc_ID}`:`/${cust_id}/${gallery_id}/${props.product.prc_ID}`)}>
             <div className={styles.avatar_wrapper}>
-                <img src={`http://golowinskiy-api.bostil.ru/api/Img?AppCode=${cust_id}&ImgFileName=${props.product.image_Base}`}/>
+                <img src={`${api_v1.galleryProduct}?AppCode=${cust_id}&ImgFileName=${props.product.image_Base}`}/>
             </div>
             <div className={styles.product_description}>
                 <div className={styles.name}>
