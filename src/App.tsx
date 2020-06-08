@@ -21,8 +21,8 @@ import {Restore} from "./components/auth/restore";
 import {history} from "./index";
 import {pipe} from "fp-ts/es6/pipeable";
 import {getOrElse, map} from "fp-ts/es6/Option";
-import {api_v1} from "./api";
 import axios from 'axios'
+import {api_v1, imagePath} from "./api";
 
 function App() {
     const isFooter=useSelector((state:RootStateType)=>state.product.footerState);
@@ -42,7 +42,7 @@ function App() {
 
     return (
         <div className={styles.app}
-             style={{backgroundImage: ` url(http://golowinskiy-api.bostil.ru${background}) `}}>
+             style={{backgroundImage: ` url(${imagePath}${background}) `}}>
             {(sidebar && width < 1086) &&
             <Sidebar onClose={setSidebar}/>
             }

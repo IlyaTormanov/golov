@@ -3,10 +3,11 @@ import {isActionOf} from "typesafe-actions";
 import {catchError, filter, map, mergeMap, delay, tap} from "rxjs/operators";
 import {authActions} from "./actions";
 import {ajax} from "rxjs/ajax";
-import {api_v1} from "../../api";
+
 import {concat, EMPTY, from, of, pipe} from "rxjs";
 import {push} from "connected-react-router";
 import {combineEpics} from "redux-observable";
+import {api_v1} from "../../api";
 
 export const registerEpic: RootEpic = (action$, state$) => action$.pipe(
     filter(isActionOf(authActions.registration.request)),

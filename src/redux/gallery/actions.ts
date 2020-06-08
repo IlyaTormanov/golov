@@ -4,7 +4,7 @@ import {Product, ProductDescription} from "../../interfaces";
 
 export interface GalleryRequest {
     data:{
-        CID?: string,
+        CID?: string|null,
         Cust_ID: string,
         ID: string
     },

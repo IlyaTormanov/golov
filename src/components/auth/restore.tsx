@@ -5,6 +5,8 @@ import {AuthInput} from "../utilsComponents/authInput";
 import axios from 'axios'
 import {history} from "../../index";
 import {useParams} from "react-router";
+import {api_v1} from "../../api";
+
 export interface Props{
 
 }
@@ -14,7 +16,7 @@ export const Restore:FunctionComponent<Props>=()=>{
     const [message,setMessage]=useState<{message:string,result:boolean}>();
     const {cust_id} = useParams<{cust_id: string}>()
     const submit=useCallback(()=>{
-        axios.post('http://golowinskiy-api.bostil.ru/api/password',{phone:phone,Cust_ID_main:cust_id},{
+        axios.post(api_v1.restore,{phone:phone,Cust_ID_main:cust_id},{
             headers:{
                 "Content-Type": "application/json"
             }

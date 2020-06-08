@@ -4,7 +4,7 @@ $classes: image aside info left right additional;
   width: 100vw;
   height: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1068px) {
     background: #fff;
     padding: 1% 0;
     position: absolute;
@@ -42,7 +42,7 @@ $classes: image aside info left right additional;
       }
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1068px) {
       display: flex;
       flex-direction: column;
 
@@ -79,7 +79,7 @@ $classes: image aside info left right additional;
       color: white;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1068px) {
       .left, .right {
         position: absolute;
         top: 200px;
@@ -210,8 +210,8 @@ $classes: image aside info left right additional;
 
       img {
         margin: 0 5px;
-        width: 90px;
-        height: 50px;
+        max-width: 90px;
+        height: auto;
 
       }
     }

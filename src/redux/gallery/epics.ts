@@ -3,8 +3,9 @@ import {isActionOf} from "typesafe-actions";
 import {catchError, filter, map, mergeMap} from "rxjs/operators";
 import {galleryActions} from "./actions";
 import {ajax} from "rxjs/ajax";
-import {api_v1} from "../../api";
+
 import {from, of} from "rxjs";
+import {api_v1} from "../../api";
 
 
 

@@ -24,6 +24,8 @@ import {chain, fromNullable, getOrElse, map} from "fp-ts/es6/Option";
 import {init} from "fp-ts/es6/Array";
 import {ClipLoader} from "react-spinners";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+import {api_v1} from "../../../api";
+
 
 
 export const append = <T extends any>(item: T) => (array: T[]) => [...array, item];
@@ -106,7 +108,7 @@ export const CreateProduct: FunctionComponent<Props> = () => {
     const preloader=useSelector((state:RootStateType)=>state.product.isAdd)
 
     const uploadImage = useCallback((img: File) => axios.post(
-        'http://golowinskiy-api.bostil.ru/api/img/upload/',
+        api_v1.uploadImage,
         prepareToFormData({
             'AppCode': cust_id,
             'Img': img,

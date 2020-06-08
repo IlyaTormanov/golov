@@ -4,9 +4,10 @@ import {isActionOf} from "typesafe-actions";
 import {catchError, delay, filter, map, mergeMap, tap} from "rxjs/operators";
 import {productActions} from "./actions";
 import {ajax} from "rxjs/ajax";
-import {api_v1} from "../../api";
+
 import {concat, EMPTY, forkJoin, from, of, throwError} from "rxjs";
 import {goBack} from "connected-react-router";
+import {api_v1} from "../../api";
 export const prepareToFormData = (data: Object) => {
     const result = new FormData();
     Object.entries(data).forEach(([key, value]) => result.append(key, value))

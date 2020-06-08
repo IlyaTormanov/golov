@@ -3,8 +3,9 @@ import {filter, map, mergeMap} from "rxjs/operators";
 import {isActionOf} from "typesafe-actions";
 import {categoriesAction} from "./actions";
 import {ajax} from "rxjs/ajax";
-import {api_v1} from "../../api";
+
 import {from, of} from "rxjs";
+import {api_v1} from "../../api";
 
 export const fetchAllCategoriesEpic:RootEpic=(action$)=>action$.pipe(
     filter(isActionOf(categoriesAction.fetchAllCategory.request)),
