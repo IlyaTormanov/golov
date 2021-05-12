@@ -45,7 +45,7 @@
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",
     "slick-carousel": "^1.8.1",
-    "swiper": "^5.4.2",
+    "swiper": "^6.5.1",
     "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.5"
   },
